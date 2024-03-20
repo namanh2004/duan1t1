@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:icon="@drawable/ic_home"
+        android:id="@+id/trangchu"
+        android:title="Trang chủ"/>
+
+
+    <item
+
+        android:id="@+id/donnhap"
+        android:title="Quản lý đơn hàng"/>
+    <item
+
+        android:id="@+id/sanPham"
+        android:title="Quản lý sản phẩm"/>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Thống kê"
+            android:id="@+id/statistical">
+            <menu>
+                <item
+                    android:id="@+id/revenue"
+
+                    android:title="Doanh thu"/>
+
+                <item
+
+                    android:id="@+id/top10"
+                    android:title="Top 10 sản phầm bán chạy"/>
+            </menu>
+
+
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Người dùng"
+            android:id="@+id/user">
+            <menu>
+                <item
+
+                    android:id="@+id/createAccount"
+                    android:title="Quản lý tài khoản "/>
+                <item
+
+                    android:id="@+id/changePassword"
+                    android:title="Thông tin tài khoảm   "/>
+                <item
+                    android:id="@+id/logout"
+
+                    android:title="Đăng xuất"/>
+            </menu>
+        </item>
+    </group>
+</menu>
