@@ -89,10 +89,10 @@
             />
 
         <Button
-            android:id="@+id/btn_dangky"
+            android:id="@+id/btnOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng ký"
+            android:text="Trở về"
             android:backgroundTint="@color/black"
             android:textColor="@color/white"
             android:textStyle="bold"
