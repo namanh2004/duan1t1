@@ -16,12 +16,11 @@ import java.util.List;
 public class DAOQuanTriVien {
 
     private SQLiteDatabase db;
-    private DbHelper dbHelper;
+
     public DAOQuanTriVien(Context context) {
-        dbHelper = new DbHelper(context);
+        DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
-
 
     public long insert(QuanTriVien obj) {
         ContentValues contentValues = new ContentValues();
@@ -70,28 +69,13 @@ public class DAOQuanTriVien {
         return getData(sql);
     }
 
-    public boolean dangKy(String username, String password, String hoTen){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("maQTV",username);
-        values.put("hoTen",hoTen);
-        values.put("matKhau",password);
-
-        long row = db.insert("QuanTriVien", null, values);
-        return (row > 0);
-    }
-
-    public long checkLogin(String username, String password) {
-
-        if (db != null) {
-            Cursor cursor = db.rawQuery("SELECT * FROM QuanTriVien WHERE maQTV = ? AND matKhau = ?", new String[]{username, password});
-            if (cursor != null) {
-                int count = cursor.getCount();
-                cursor.close();
-                return count;
-            }
+    public long checkLogin(String username,String password) {
+        Cursor cursor = db.rawQuery("SELECT * FROM QuanTriVien WHERE maQTV = ? AND matKhau = ?",new String[]{username,password});
+        if (cursor.getCount() > 0) {
+            return 1;
+        } else {
+            return -1;
         }
-        return -1;
     }
 
 }

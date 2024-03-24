@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sp"
+        android:padding="12dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/xehang"
+                android:id="@+id/images_sp"
+                android:layout_margin="20dp"
+                />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/sp_maSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã Sản Phẩm : "
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
+
+
+            <TextView
+                android:id="@+id/sp_tensanpham"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Tên Sản Phẩm"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/sp_tenHang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên Hãng :         "
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/sp_giatien"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gia tiền :          "
+                android:textSize="16sp"
+                android:textColor="#FF0031"
+                android:layout_margin="5dp"/>
+
+
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/btn_delete_spAdmin"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/img_delete" />
+
+    </RelativeLayout>
+</RelativeLayout>

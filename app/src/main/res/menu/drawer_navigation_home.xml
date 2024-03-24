@@ -11,10 +11,12 @@
     <item
 
         android:id="@+id/donnhap"
+        android:icon="@drawable/donhang"
         android:title="Quản lý đơn hàng"/>
     <item
 
         android:id="@+id/sanPham"
+        android:icon="@drawable/sanpham"
         android:title="Quản lý sản phẩm"/>
 
     <group android:checkableBehavior="single">
@@ -23,11 +25,11 @@
             <menu>
                 <item
                     android:id="@+id/revenue"
-
+                    android:icon="@drawable/thongke"
                     android:title="Doanh thu"/>
 
                 <item
-
+                    android:icon="@drawable/top"
                     android:id="@+id/top10"
                     android:title="Top 10 sản phầm bán chạy"/>
             </menu>
@@ -41,16 +43,16 @@
             android:id="@+id/user">
             <menu>
                 <item
-
+                    android:icon="@drawable/qltk"
                     android:id="@+id/createAccount"
                     android:title="Quản lý tài khoản "/>
                 <item
-
+                    android:icon="@drawable/thongtintk"
                     android:id="@+id/changePassword"
-                    android:title="Thông tin tài khoảm   "/>
+                    android:title="Đổi mật khẩu   "/>
                 <item
                     android:id="@+id/logout"
-
+                    android:icon="@drawable/dangxuat"
                     android:title="Đăng xuất"/>
             </menu>
         </item>
