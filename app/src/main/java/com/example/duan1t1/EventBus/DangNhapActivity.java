@@ -15,13 +15,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+
 import com.example.duan1t1.DAO.DAOQuanTriVien;
 import com.example.duan1t1.Model.MainActivity;
+import com.example.duan1t1.PhanQuyen;
 import com.example.duan1t1.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class DangNhapActivity extends AppCompatActivity {
-    Button btn_login, btndangky;
+    Button btn_login, btnOut;
     EditText txt_username,txt_password;
     TextInputLayout w_username,w_password;
     CheckBox chk_rememberAccount;
@@ -32,21 +34,16 @@ public class DangNhapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-//        btnOut = findViewById(R.id.btn_out);
-//        btnOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(DangNhapActivity.this, luaChonND.class));
-//            }
-//        });
-        btndangky = findViewById(R.id.btn_dangky);
-
-        btndangky.setOnClickListener(new View.OnClickListener() {
+        btnOut = findViewById(R.id.btnOut);
+        btnOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DangNhapActivity.this,DangKyActivity.class));
+                startActivity(new Intent(DangNhapActivity.this, PhanQuyen.class));
             }
         });
+
+
+
 
         initUI();
         btnLogin();

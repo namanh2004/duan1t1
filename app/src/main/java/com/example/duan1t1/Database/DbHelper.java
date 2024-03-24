@@ -19,7 +19,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //QuanTriVien
         String createTableQuanTriVien =
                 "Create table QuanTriVien (" +
-                        "maQTV TEXT PRIMARY KEY, " +
+                        "maQTV TEXT  PRIMARY KEY, " +
                         "hoTen TEXT NOT NULL, " +
                         "matKhau TEXT NOT NULL)";
         db.execSQL(createTableQuanTriVien);
@@ -112,7 +112,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         if (oldVersion != newVersion) {
             db.execSQL(dropTableLoaiQuanTriVien);
-           db.execSQL(dropTableLoaiKhachHang);
+            db.execSQL(dropTableLoaiKhachHang);
             db.execSQL(dropTableLoaiHang);
             db.execSQL(dropTableLoaiSanPham);
             db.execSQL(dropTableLoaiHoaDon);
