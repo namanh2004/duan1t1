@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Hãng sản phẩm đang có "
+            android:textColor="#E6903B"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:id="@+id/tv_tittle2"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E6903B" />
+
+        <ListView
+            android:padding="10dp"
+            android:id="@+id/list_hang"
+            android:layout_width="match_parent"
+            android:layout_height="230dp" />
+
+        <EditText
+            android:layout_margin="10dp"
+            android:id="@+id/edt_themhang_"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:background="@drawable/shape_edittext"
+            android:textColor="#E6903B"
+            android:textColorHint="#E6903B"
+            android:textSize="15dp"
+            android:hint="Nhập hãng muốn thêm"/>
+
+        <ImageButton
+            android:id="@+id/ibtn_addhang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_none"
+            android:src="@android:drawable/ic_menu_add" />
+    </LinearLayout>
+</LinearLayout>

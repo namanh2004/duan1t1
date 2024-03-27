@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="10dp"
+    android:backgroundTint="@color/white"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Lịch sử mua hàng "
+            android:textColor="#E6903B"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:defaultFocusHighlightEnabled="true"
+            android:id="@+id/rcv_list_lichsu"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List đang trống"
+            android:textSize="25dp"
+            android:textColor="#7A7A7A"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:id="@+id/tv_thongbao_rong"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
