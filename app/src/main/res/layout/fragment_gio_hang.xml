@@ -34,7 +34,7 @@
                     android:text="Tổng"
                     android:textSize="15dp"
                     android:textStyle="bold"
-                    android:textColor="@color/vang"/>
+                    android:textColor="#FF0000"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -42,20 +42,20 @@
                     android:text=" { Đã bao gồm thuế }"
                     android:textSize="15dp"
                     android:textStyle="normal"
-                    android:textColor="@color/vang"/>
+                    android:textColor="#000000"/>
                 <TextView
                     android:id="@+id/tv_gio_gia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1800000 đ"
                     android:textSize="15dp"
-                    android:textStyle="normal"
-                    android:textColor="@color/vang"/>
+                    android:textStyle="bold"
+                    android:textColor="#E72929"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#FEC389"
+                android:background="#E72929"
                 android:id="@+id/ll_themgio"
                 android:layout_marginTop="10dp"
                 android:gravity="center"

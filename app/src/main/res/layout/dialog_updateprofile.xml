@@ -19,7 +19,7 @@
                android:text="Cập nhật thông tin"
                android:textSize="24dp"
                android:textStyle="bold"
-               android:textColor="#E6903B"
+               android:textColor="#BFEA7C"
                android:layout_margin="10dp"
                android:id="@+id/tv_suaTaiKhoan"
                />
@@ -36,8 +36,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Họ và tên"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_hoten_edit"/>
            <EditText
@@ -46,8 +46,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Email"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_email_edit"/>
            <EditText
@@ -58,8 +58,8 @@
                android:padding="10dp"
                android:inputType="number"
                android:maxLength="10"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_sdt_edit"/>
 

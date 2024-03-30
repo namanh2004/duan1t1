@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:padding="10dp"
-        android:background="#D9D9D9"
+        android:background="#F7EEDD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -70,14 +70,14 @@
                     android:id="@+id/tv_gia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="#FF0000"
                     android:text="Giá" />
 
                 <TextView
                     android:id="@+id/tv_soLuong_"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="#03A9F4"
                     android:text="Số lượng" />
             </LinearLayout>
 

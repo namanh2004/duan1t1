@@ -18,26 +18,27 @@
             android:layout_height="wrap_content"
             android:text="Tổng"
             android:textSize="14dp"
-            android:textColor="#E6903B"
+            android:textColor="#FF0000"
             android:textStyle="bold"/>
+
         <TextView
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:text="{ Đã bao gồm thuế }"
+            android:textColor="#000000"
             android:textSize="14dp"
-            android:textColor="#E6903B"
-            android:textStyle="normal"/>
+            android:textStyle="normal" />
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giá"
-            android:textSize="14dp"
-            android:textColor="#E6903B"
-            android:textStyle="bold"
-            android:layout_marginRight="30dp"
             android:id="@+id/tv_tonggia_khoanchi"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30dp"
+            android:text="Giá"
+            android:textColor="#FF0000"
+            android:textSize="14dp"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

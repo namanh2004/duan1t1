@@ -10,7 +10,7 @@
         android:id="@+id/toolbar_admin"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#BFEA7C"
+        android:background="#000000"
         app:titleTextColor="@color/white"
         app:menu="@menu/menu_toolbar" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/bnv_Admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#BFEA7C"
+        android:background="#000000"
         app:itemActiveIndicatorStyle="@drawable/shape_icon2"
         app:itemIconTint="@color/white"
         app:menu="@menu/adminquanly"/>
