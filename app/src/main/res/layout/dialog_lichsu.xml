@@ -18,7 +18,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Lịch sử mua hàng "
-            android:textColor="#E6903B"
+            android:textColor="#BFEA7C"
             android:textSize="30dp"
             android:textStyle="bold"/>
         <androidx.recyclerview.widget.RecyclerView
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="List đang trống"
             android:textSize="25dp"
-            android:textColor="#7A7A7A"
+            android:textColor="#000000"
             android:visibility="gone"
             android:layout_gravity="center"
             android:id="@+id/tv_thongbao_rong"

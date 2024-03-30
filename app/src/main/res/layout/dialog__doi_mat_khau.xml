@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Đổi mật khẩu "
-                android:textColor="#E6903B"
+                android:textColor="#BFEA7C"
                 android:textSize="30dp"
                 android:textStyle="bold"/>
             <EditText
@@ -39,8 +39,8 @@
                 android:hint="Nhập mật khẩu cũ"
                 android:padding="10dp"
                 android:inputType="textPassword"
-                android:textColor="#E6903B"
-                android:textColorHint="#E6903B" />
+                android:textColor="#000000"
+                android:textColorHint="#B2B2B2" />
 
             <EditText
                 android:id="@+id/edt_nhapmkmoi"
@@ -51,8 +51,8 @@
                 android:hint="Nhập mật khẩu mới"
                 android:padding="10dp"
                 android:inputType="textPassword"
-                android:textColor="#E6903B"
-                android:textColorHint="#E6903B" />
+                android:textColor="#000000"
+                android:textColorHint="#B2B2B2" />
 
             <EditText
                 android:id="@+id/edt_xacnhanmk"
@@ -62,9 +62,9 @@
                 android:background="@drawable/shape_edittext"
                 android:hint="Xác nhận mật khẩu"
                 android:padding="10dp"
-                android:textColor="#E6903B"
+                android:textColor="#000000"
                 android:inputType="textPassword"
-                android:textColorHint="#E6903B" />
+                android:textColorHint="#B2B2B2" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_doiMK"

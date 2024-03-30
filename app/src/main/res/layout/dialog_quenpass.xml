@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Nhập Email của bạn"
-            android:textColor="#E6903B"
+            android:textColor="#000000"
             android:textSize="24dp"
             android:textStyle="bold" />
 
@@ -31,8 +31,8 @@
             android:background="@drawable/shape_edittext"
             android:hint="Email"
             android:padding="10dp"
-            android:textColor="#E6903B"
-            android:textColorHint="#E6903B" />
+            android:textColor="#000000"
+            android:textColorHint="#B2B2B2" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_quen"

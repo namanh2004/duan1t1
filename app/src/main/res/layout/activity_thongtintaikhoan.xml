@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:text="Username"
                         android:textStyle="bold"
-                        android:textColor="#E6903B"
+                        android:textColor="#BFEA7C"
                         android:textSize="16dp"
                         android:id="@+id/tv_username_khach"/>
                     <ImageView
@@ -59,7 +59,7 @@
                        android:layout_height="wrap_content"
                        android:text="Số tiền"
                        android:textStyle="bold"
-                       android:textColor="#FEC389"
+                       android:textColor="#03A9F4"
                        android:textSize="14dp"
                        android:gravity="center"
                        android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
@@ -84,15 +84,15 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/cam"/>
+        android:background="#BFEA7C"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_thongtinkhach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabIndicatorColor="#E6903B"
-        app:tabSelectedTextColor="#E6903B"
-        app:tabTextColor="#FEC389">
+        app:tabIndicatorColor="#000000"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextColor="#000000">
 
     </com.google.android.material.tabs.TabLayout>
 

@@ -94,7 +94,7 @@ public class Fragment_thongtin extends Fragment {
         });
     }
     Adapter_naptien adapterNaptien;
-    private void lichuGG() {
+    private void lichuGG() {//lịch sử giao dịch
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_lichsu,null,false);
         builder.setView(view);
