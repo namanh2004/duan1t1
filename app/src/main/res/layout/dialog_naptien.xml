@@ -27,19 +27,19 @@
            android:text="Thông tin tài khoản Admin: "
            android:textSize="20dp"
            android:textStyle="bold"
-           android:textColor="#03A9F4"
+           android:textColor="#000000"
            />
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Tên chủ ví: Nguyễn Khắc Nam Anh"
-           android:textColor="#4CAF50"
+           android:textColor="#000000"
            />
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Số tài khoản: 0399907496"
-           android:textColor="#00BCD4"/>
+           android:textColor="#000000"/>
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/shape_btn"
+            android:background="@drawable/btn_xacnhan"
             android:padding="10dp"
             android:text="Nạp"
             android:textColor="@color/white"
@@ -116,7 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/shape_btn"
+            android:background="@drawable/btn_delete"
             android:padding="10dp"
             android:text="Hủy"
             android:textColor="@color/white"

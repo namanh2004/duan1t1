@@ -5,7 +5,7 @@
     android:layout_width="180dp"
     android:padding="10dp"
     app:cardCornerRadius="10dp"
-    android:backgroundTint="#F7EEDD"
+    android:backgroundTint="#FFFFFF"
     android:layout_margin="5dp"
     android:layout_height="wrap_content">
     <LinearLayout

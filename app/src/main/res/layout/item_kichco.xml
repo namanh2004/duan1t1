@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:id="@+id/cv_kichco"
-        android:background="#00BCD4"
+        android:background="#FFFFFF"
         android:layout_height="wrap_content"
 
         tools:ignore="Orientation">
@@ -18,7 +18,7 @@
             android:layout_height="20dp"
             android:textStyle="bold"
             android:text="43"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:gravity="center"
             android:id="@+id/tv_kichco_show1"/>
     </LinearLayout>
