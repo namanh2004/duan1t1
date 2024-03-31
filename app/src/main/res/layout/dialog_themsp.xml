@@ -22,7 +22,7 @@
                android:text="Thêm sản phẩm"
                android:textSize="24dp"
                android:textStyle="bold"
-               android:textColor="#E6903B"
+               android:textColor="#BFEA7C"
                android:layout_margin="10dp"
                android:id="@+id/tv_themsanpham"
                />
@@ -39,8 +39,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Tên sản phẩm"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_tensp"/>
            <EditText
@@ -49,8 +49,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Tên thương hiệu"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:focusable="false"
                android:inputType="none"
@@ -64,8 +64,8 @@
                android:hint="Giá sản phẩm ( đơn vị VND )"
                android:padding="10dp"
                android:inputType="number"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_giaSP"/>
            <LinearLayout
@@ -78,9 +78,9 @@
                    android:background="@drawable/shape_edittext"
                    android:hint="Cỡ 1, cỡ 2,..."
                    android:padding="10dp"
-                   android:textColor="#E6903B"
+                   android:textColor="#000000"
                    android:inputType="text"
-                   android:textColorHint="#E6903B"
+                   android:textColorHint="#B2B2B2"
                    android:layout_marginBottom="10dp"
                    android:id="@+id/rcv_kichco"/>
 
@@ -91,8 +91,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Năm sản xuất"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:layout_marginBottom="10dp"
                android:inputType="number"
                android:id="@+id/edt_namSX"/>
@@ -102,8 +102,8 @@
                android:background="@drawable/shape_edittext"
                android:hint="Số lượng"
                android:padding="10dp"
-               android:textColor="#E6903B"
-               android:textColorHint="#E6903B"
+               android:textColor="#000000"
+               android:textColorHint="#B2B2B2"
                android:inputType="number"
                android:layout_marginBottom="10dp"
                android:id="@+id/edt_soLuong"/>

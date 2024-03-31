@@ -10,7 +10,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Nạp tiền"
-    android:textColor="#FFC107"
+    android:textColor="#000000"
     android:textStyle="bold"
     android:textSize="30dp"
     android:layout_gravity="center"
@@ -27,38 +27,38 @@
            android:text="Thông tin tài khoản Admin: "
            android:textSize="20dp"
            android:textStyle="bold"
-           android:textColor="#FF5722"
+           android:textColor="#03A9F4"
            />
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Tên chủ ví: Quàng Ngọc Thủy"
-           android:textColor="#FF5722"
+           android:text="Tên chủ ví: Nguyễn Khắc Nam Anh"
+           android:textColor="#4CAF50"
            />
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Số tài khoản: 12345678910"
-           android:textColor="#FF5722"/>
+           android:text="Số tài khoản: 0399907496"
+           android:textColor="#00BCD4"/>
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Nội dung chuyển : Email + Số điện thoại"
-           android:textColor="#FF5722"
+           android:textColor="#000000"
            />
    </LinearLayout>
+
+
     <EditText
         android:id="@+id/edt_email_naptien"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:textColor="#E6903B"
         android:background="@drawable/shape_edittext"
         android:hint="Nhập Email"
-        android:textColorHint="@color/vang"
-        android:padding="10dp" />
-
-
+        android:padding="10dp"
+        android:textColor="#E6903B"
+        android:textColorHint="#B2B2B2" />
 
     <EditText
         android:id="@+id/edt_sotien"
@@ -67,7 +67,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/shape_edittext"
         android:hint="Nhập số tiền cần nạp"
-        android:textColorHint="@color/vang"
+        android:textColorHint="#B2B2B2"
         android:maxLength="10"
         android:inputType="number"
         android:textColor="#E6903B"

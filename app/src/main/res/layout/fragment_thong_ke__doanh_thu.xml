@@ -69,7 +69,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/shape_btn"
+        android:background="@drawable/btn_doanhthu"
         android:text="Doanh thu"
         android:textColor="@color/white"
         android:textStyle="bold" />

@@ -215,7 +215,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                     if (task.getResult().toObjects(User.class).get(0).getTrangThai()==1){
                         DangNhap(task.getResult().toObjects(User.class).get(0));
                     }else {
-                        Toast.makeText(DangNhap_Activity.this, "Tài khoản bạn đã bị đình chỉ vui lòng liên", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DangNhap_Activity.this, "Tài khoản bạn đã bị đình chỉ vui lòng liên hệ", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
                         finish();
                     }
