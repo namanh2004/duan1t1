@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#BFEA7C" />
+            android:background="#000000" />
 
         <ListView
             android:padding="10dp"
