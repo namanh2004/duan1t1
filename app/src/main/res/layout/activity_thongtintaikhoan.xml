@@ -33,21 +33,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     >
+
                     <TextView
+                        android:id="@+id/tv_username_khach"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
-                        android:textStyle="bold"
                         android:textColor="#000000"
                         android:textSize="16dp"
-                        android:id="@+id/tv_username_khach"/>
+                        android:textStyle="bold" />
+
                     <ImageView
-                        android:layout_width="20dp"
+                        android:id="@+id/imv_updatethongtin"
+                        android:layout_width="18dp"
                         android:layout_height="20dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/edit"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/imv_updatethongtin"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_create_24" />
                 </LinearLayout>
                <LinearLayout
                    android:layout_width="wrap_content"
