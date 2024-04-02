@@ -112,6 +112,7 @@ public class DangNhap_Activity extends AppCompatActivity {
         activityResultLauncher.launch(intent);
     }
 
+    //quen mat khau
     private void quenMK() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater layoutInflater = getLayoutInflater();
@@ -170,39 +171,40 @@ public class DangNhap_Activity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
     }
 
-
-    public void dangnhap() {
-        String mEmail = email.getText().toString().trim();
-        String mPass = matKhau.getText().toString().trim();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        if (email.getText().toString().isEmpty() || matKhau.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
-        progressDialog.show();
-
-
-
-        mAuth.signInWithEmailAndPassword(mEmail, mPass)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            checkBan(user);
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(DangNhap_Activity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-                            progressDialog.cancel();
-                        }
-
-                    }
-                });
+//dang nhap
+public void dangnhap() {
+    String mEmail = email.getText().toString().trim();
+    String mPass = matKhau.getText().toString().trim();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    if (email.getText().toString().isEmpty() || matKhau.getText().toString().isEmpty()) {
+        Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
+        return;
     }
+    progressDialog.setTitle("Loading");
+    progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
+    progressDialog.show();
 
+
+
+    mAuth.signInWithEmailAndPassword(mEmail, mPass)
+            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        checkBan(user);
+
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(DangNhap_Activity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                        progressDialog.cancel();
+                    }
+
+                }
+            });
+}
+
+    //check ban
     private void checkBan(FirebaseUser user) {
         db.collection("user").whereEqualTo("maUser",user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -225,30 +227,31 @@ public class DangNhap_Activity extends AppCompatActivity {
         });
     }
 
+    //chuyen
     private void chuyen(Class a) {
         Intent intent = new Intent(this, a);
         startActivity(intent);
     }
 
 
-
-    private void DangNhap(User user) {
-        if (user.getChucVu() == 1) {
-            intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
-        } else if (user.getChucVu() == 2) {
-            intent = new Intent(DangNhap_Activity.this, ManHinhNhanVien.class);
-        } else if (user.getChucVu() == 3) {
-            intent = new Intent(DangNhap_Activity.this, ManHinhKhachHang.class);
-        } else {
-            Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
-        }
-        finishAffinity();
-        if (!isFinishing()) {
-            return;
-        }
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
+  //Dang nhap user
+  private void DangNhap(User user) {
+      if (user.getChucVu() == 1) {
+          intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
+      } else if (user.getChucVu() == 2) {
+          intent = new Intent(DangNhap_Activity.this, ManHinhNhanVien.class);
+      } else if (user.getChucVu() == 3) {
+          intent = new Intent(DangNhap_Activity.this, ManHinhKhachHang.class);
+      } else {
+          Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+      }
+      finishAffinity();
+      if (!isFinishing()) {
+          return;
+      }
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+  }
 
     @Override
     protected void onDestroy() {

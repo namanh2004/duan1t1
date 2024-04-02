@@ -44,68 +44,72 @@ private FirebaseFirestore db ;
         });
     }
 
-    private void anhXa() {
+    //anh xa
+    private void anhXa(){
         email = findViewById(R.id.edt_email_dangnky);
         matKhau = findViewById(R.id.edt_matkhau_dangky);
         reMatKhau = findViewById(R.id.edt_rematkhau_dangky);
         dangKy = findViewById(R.id.btn_dangky_on);
         progressDialog = new ProgressDialog(this);
+
     }
 
-    public void dangKy(){
-        String email1 = email.getText().toString().trim();
-        String pass1 = matKhau.getText().toString().trim();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        progressDialog.setTitle("Loading");
-        progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
-        progressDialog.show();
-        if (email1.isEmpty()||pass1.isEmpty()){
-            Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
-            progressDialog.cancel();
-            return;
-        }
-        if (!pass1.equals(reMatKhau.getText().toString().trim())){
-            Toast.makeText(this, "Mật khẩu nhập lại phải giống nhau", Toast.LENGTH_SHORT).show();
-            progressDialog.cancel();
-            return;
-        }
-        if (!(pass1.length()>=6)){
-            Toast.makeText(this, "Mật khẩu phải dài hơn 6 ký tụ", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        mAuth.createUserWithEmailAndPassword(email1, pass1)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(DangKy_Activity.this,ManHinhKhachHang.class);
-                            startActivity(intent);
-                            taoUser();
-                        } else {
-                            Toast.makeText(DangKy_Activity.this, "Đăng ký tài khoản thất bại", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+   //code dang ky
+   public void dangKy(){
+       String email1 = email.getText().toString().trim();
+       String pass1 = matKhau.getText().toString().trim();
+       FirebaseAuth mAuth = FirebaseAuth.getInstance();
+       progressDialog.setTitle("Loading");
+       progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
+       progressDialog.show();
+       if (email1.isEmpty()||pass1.isEmpty()){
+           Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
+           progressDialog.cancel();
+           return;
+       }
+       if (!pass1.equals(reMatKhau.getText().toString().trim())){
+           Toast.makeText(this, "Mật khẩu nhập lại phải giống nhau", Toast.LENGTH_SHORT).show();
+           progressDialog.cancel();
+           return;
+       }
+       if (!(pass1.length()>=6)){
+           Toast.makeText(this, "Mật khẩu phải dài hơn 6 ký tụ", Toast.LENGTH_SHORT).show();
+           return;
+       }
+       mAuth.createUserWithEmailAndPassword(email1, pass1)
+               .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
+                       if (task.isSuccessful()) {
+                           Intent intent = new Intent(DangKy_Activity.this,ManHinhKhachHang.class);
+                           startActivity(intent);
+                           taoUser();
+                       } else {
+                           Toast.makeText(DangKy_Activity.this, "Đăng ký tài khoản thất bại", Toast.LENGTH_SHORT).show();
+                       }
+                   }
+               });
+   }
 
 
-    private void taoUser(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        db=FirebaseFirestore.getInstance();
-        if (user==null){
-            return;
-        }
-        db.collection("user").document(user.getUid()).set(new User(user.getUid(),user.getEmail(),"",1,0l,3)).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(DangKy_Activity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                progressDialog.cancel();
-                finishAffinity();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(DangKy_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }}
+   //Tao user
+   private void taoUser(){
+       FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       db=FirebaseFirestore.getInstance();
+       if (user==null){
+           return;
+       }
+       db.collection("user").document(user.getUid()).set(new User(user.getUid(),user.getEmail(),"",1,0l,3)).addOnSuccessListener(new OnSuccessListener<Void>() {
+           @Override
+           public void onSuccess(Void unused) {
+               Toast.makeText(DangKy_Activity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+               progressDialog.cancel();
+               finishAffinity();
+           }
+       }).addOnFailureListener(new OnFailureListener() {
+           @Override
+           public void onFailure(@NonNull Exception e) {
+               Toast.makeText(DangKy_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+           }
+       });
+   }}
