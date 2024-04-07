@@ -57,6 +57,7 @@ public class DangKy_Activity extends AppCompatActivity {
         reMatKhau = findViewById(R.id.edt_rematkhau_dangky);
         //ánh xạ đăng ký
         dangKy = findViewById(R.id.btn_dangky_on);
+        //hộp thoại ProgressDialog sẽ được tạo ra và gắn liền với activity hiện tại.
         progressDialog = new ProgressDialog(this);
 
     }
