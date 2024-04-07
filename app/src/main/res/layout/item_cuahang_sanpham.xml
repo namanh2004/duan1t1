@@ -5,7 +5,7 @@
     android:layout_width="180dp"
     android:padding="10dp"
     app:cardCornerRadius="10dp"
-    android:backgroundTint="#F7EEDD"
+    android:backgroundTint="#FFFFFF"
     android:layout_margin="5dp"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/logo1"
+            android:src="@drawable/logo3"
             android:scaleType="centerCrop"
             android:id="@+id/imv_anh_sp_cuahang"/>
         <TextView

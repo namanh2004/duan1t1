@@ -33,21 +33,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     >
+
                     <TextView
+                        android:id="@+id/tv_username_khach"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
-                        android:textStyle="bold"
-                        android:textColor="#BFEA7C"
+                        android:textColor="#000000"
                         android:textSize="16dp"
-                        android:id="@+id/tv_username_khach"/>
+                        android:textStyle="bold" />
+
                     <ImageView
-                        android:layout_width="20dp"
+                        android:id="@+id/imv_updatethongtin"
+                        android:layout_width="18dp"
                         android:layout_height="20dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/edit"
                         android:layout_marginLeft="10dp"
-                        android:id="@+id/imv_updatethongtin"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_create_24" />
                 </LinearLayout>
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -59,7 +61,7 @@
                        android:layout_height="wrap_content"
                        android:text="Số tiền"
                        android:textStyle="bold"
-                       android:textColor="#03A9F4"
+                       android:textColor="#000000"
                        android:textSize="14dp"
                        android:gravity="center"
                        android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
@@ -78,13 +80,13 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/cancel"
+            android:src="@drawable/baseline_cancel_24"
             android:id="@+id/imv_cancel"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#BFEA7C"/>
+        android:layout_height="3dp"
+        android:background="#000000"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_thongtinkhach"
         android:layout_width="match_parent"
