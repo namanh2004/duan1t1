@@ -53,7 +53,9 @@ private FirebaseFirestore db ;
         email = findViewById(R.id.edt_email_dangnky);
         //ánh xạ mật khẩu
         matKhau = findViewById(R.id.edt_matkhau_dangky);
+        //ánh xạ nhập lại mật khẩu
         reMatKhau = findViewById(R.id.edt_rematkhau_dangky);
+        //ánh xạ đăng ký
         dangKy = findViewById(R.id.btn_dangky_on);
         progressDialog = new ProgressDialog(this);
 
