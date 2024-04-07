@@ -12,7 +12,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:scaleType="centerCrop"
-        android:background="@drawable/logo1" />
+        android:background="@drawable/logo3" />
 
     <LinearLayout
         android:layout_width="match_parent"
