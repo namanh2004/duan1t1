@@ -63,12 +63,21 @@ private FirebaseFirestore db ;
 
    //code dang ky
    public void dangKy(){
+        //Dòng này lấy giá trị nhập vào từ trường email
        String email1 = email.getText().toString().trim();
+
+       //dòng này lấy giá trị nhập vào từ trường mật khẩu
        String pass1 = matKhau.getText().toString().trim();
+
+       //Dòng này khởi tạo một thể hiện của lớp FirebaseAuth
        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+       //Hiển thị ProgressDialog để thông báo việc đang tải dữ liệu.
        progressDialog.setTitle("Loading");
        progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
        progressDialog.show();
+
+       //Kiểm tra tính hợp lệ của dữ liệu đầu vào:
        if (email1.isEmpty()||pass1.isEmpty()){
            Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
            progressDialog.cancel();
