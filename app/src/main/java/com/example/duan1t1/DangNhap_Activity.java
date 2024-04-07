@@ -171,7 +171,7 @@ public class DangNhap_Activity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
     }
 
-//dang nhap
+ //dang nhap
 public void dangnhap() {
     String mEmail = email.getText().toString().trim();
     String mPass = matKhau.getText().toString().trim();
@@ -258,4 +258,6 @@ public void dangnhap() {
         super.onDestroy();
         System.gc();
     }
+
+
 }
