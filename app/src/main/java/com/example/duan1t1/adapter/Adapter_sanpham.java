@@ -133,12 +133,14 @@ public class Adapter_sanpham extends RecyclerView.Adapter<Adapter_sanpham.ViewDo
         return list.size();
     }
 
+    // khi update hãng
     @Override
     public Filter getFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 if (constraint.toString().isEmpty()) {
+                    //update hãng sẽ chuyển từ list ban đầu sang list mới
                     list = list2;
                 } else {
                     List<SanPham> list1_hangMoi = new ArrayList<>();

@@ -55,15 +55,15 @@ public class Adapter_cuahang extends RecyclerView.Adapter<Adapter_cuahang.ViewHo
         itemCuaHang = new Adapter_itemCuaHang(list.get(position).getSanPham(), context);
         holder.rcv_list.setAdapter(itemCuaHang);
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        holder.rcv_list.setLayoutManager(manager);
-        holder.xemthem.setText("Xem thêm");
+        holder.rcv_list.setLayoutManager(manager); // hiển thị list trong list
+        holder.xemthem.setText("Xem thêm"); // chữ xem thêm
         holder.xemthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ShowMore.class);
                 List<SanPham> phamList = list.get(position).getSanPham();
                 String[] s = new String[]{list.get(position).getMaHang(), list.get(position).getTenHang()};
-                intent.putExtra("list", s);
+                intent.putExtra("list", s); // phần xem thêm sản phẩm
                 ((Activity) context).startActivity(intent);
             }
         });

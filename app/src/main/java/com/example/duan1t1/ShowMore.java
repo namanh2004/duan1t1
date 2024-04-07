@@ -36,6 +36,7 @@ public class ShowMore extends AppCompatActivity {
         setContentView(R.layout.activity_show_more);
         Intent intent = getIntent();
         String[] a = intent.getStringArrayExtra("list");
+        // adapter cua hang
 
         nghe(a[0]);
         list = new ArrayList<>();
@@ -72,6 +73,7 @@ public class ShowMore extends AppCompatActivity {
 
     FirebaseFirestore db;
 
+    //lắng nghe các sự kiện thêm sưar xóa
     private void nghe(String a) {
         db = FirebaseFirestore.getInstance();
         db.collection("sanPham").whereEqualTo("maHang", a).

@@ -154,7 +154,7 @@ public class ManHinhKhachHang extends AppCompatActivity {
         Log.e(TAG, "onCreateOptionsMenu: " + menu_thongBao);
         return true;
     }
-
+//dddd
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
