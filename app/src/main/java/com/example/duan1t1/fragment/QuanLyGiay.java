@@ -139,6 +139,7 @@ public class QuanLyGiay extends Fragment {
         if (sanPham.getTenSP() != null && sanPham.getAnh() != null && sanPham.getKichCo() != null && sanPham.getGia() != null
                 && sanPham.getNamSX() != null && sanPham.getSoLuong() != null && list_hang != null
         ) {
+            //sửa sản phẩm
             linkImage = sanPham.getAnh();
             Glide.with(getContext()).load(sanPham.getAnh()).error(R.drawable.baseline_crop_original_24).into(anh);
             ten.setText(sanPham.getTenSP());
@@ -151,7 +152,7 @@ public class QuanLyGiay extends Fragment {
 
         them.setText(tennut);
         anh.setOnClickListener(v -> {
-            ManHinhAdmin admin = (ManHinhAdmin) getActivity();
+            ManHinhAdmin admin = (ManHinhAdmin) getActivity();// call yeucauquyen() từ màn hình ManHinhAdmin
             admin.yeucauquyen(getContext());
         });
         thuongHieu.setOnClickListener(v -> addHang(thuongHieu, sanPham));
@@ -185,6 +186,7 @@ public class QuanLyGiay extends Fragment {
         for (String s : list) {
             ma += s + ",";
         }
+        //loại bỏ dấu phẩy cuối dòng
         StringBuilder builder = new StringBuilder(ma);
         builder.deleteCharAt(ma.length() - 1);
         return ma;
@@ -195,6 +197,7 @@ public class QuanLyGiay extends Fragment {
     private int change = 0;
     List<Hang> list_hang;
 
+    //thêm và xóa hãng
     private void addHang(EditText thuongHieu, SanPham sanPham) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -210,6 +213,7 @@ public class QuanLyGiay extends Fragment {
         listView.setAdapter(adapter);
         edt_hang.setVisibility(View.GONE);
 
+        //xóa hãng
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -407,6 +411,7 @@ public class QuanLyGiay extends Fragment {
         StorageReference storageReference;
         storageReference = FirebaseStorage.getInstance().getReference("images").child(id);
         Log.e("TAG", "upAnh: "+imageUri );
+        //up lên fisebase
         if (!imageUri.toString().contains("https://firebasestorage.googleapis.com")){
             storageReference.putFile(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -456,6 +461,7 @@ public class QuanLyGiay extends Fragment {
                     });
             return;
         }
+        //sửa sản phẩm
         sanPham.setMaSp(id);
         sanPham.setTenHang(a.getText().toString());
         sanPham.setTenSP(ten.getText().toString().trim());

@@ -63,7 +63,7 @@ public class SeeSanPham extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sanpham_show);
         Intent intent = getIntent();
-        String s = intent.getStringExtra("sanpham");
+        String s = intent.getStringExtra("sanpham"); //adapter Item cuahang
 
         nghe(s);
         rcv_list = findViewById(R.id.rcv_listco);

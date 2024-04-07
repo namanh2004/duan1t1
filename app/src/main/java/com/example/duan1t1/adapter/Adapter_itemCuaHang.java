@@ -54,6 +54,7 @@ public class Adapter_itemCuaHang extends RecyclerView.Adapter<Adapter_itemCuaHan
                 Intent intent = new Intent(context, SeeSanPham.class);
                 intent.putExtra("sanpham",list.get(position).getMaSp());
                 ((Activity)context).startActivity(intent);
+                // itent id sp sang màn hình chi tiết
             }
         });
     }
