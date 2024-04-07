@@ -31,6 +31,8 @@ private ProgressDialog progressDialog;
 private FirebaseFirestore db ;
     private Intent intent;
     private DocumentReference reference;
+
+    // sự kiện ấn nút đăng ký
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
