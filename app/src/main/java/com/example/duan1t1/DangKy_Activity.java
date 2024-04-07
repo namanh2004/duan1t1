@@ -37,6 +37,7 @@ private FirebaseFirestore db ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
+        //gọi ánh xạ để
        anhXa();
         dangKy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +49,9 @@ private FirebaseFirestore db ;
 
     //anh xa
     private void anhXa(){
+        //ánh xạ email
         email = findViewById(R.id.edt_email_dangnky);
+        //ánh xạ mật khẩu
         matKhau = findViewById(R.id.edt_matkhau_dangky);
         reMatKhau = findViewById(R.id.edt_rematkhau_dangky);
         dangKy = findViewById(R.id.btn_dangky_on);
