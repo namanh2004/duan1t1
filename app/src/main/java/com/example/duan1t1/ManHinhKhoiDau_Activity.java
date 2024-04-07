@@ -25,7 +25,7 @@ private  Intent intent;
 
         nextActivityAdmin();
         nextActivityNhanVien();
-//        nextActivityKhachHang();
+        nextActivityKhachHang();
 
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,19 +75,19 @@ private  Intent intent;
         finish();
     }
 
-//    private void nextActivityKhachHang() {
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        if (user == null){
-//
-//            Intent intent = new Intent(this, DangNhap_Activity.class);
-//            startActivity(intent);
-//        }else {
-//            //da co tai khoan khach hang
-//            Intent intent = new Intent(this, ManHinhKhachHang.class);
-//            startActivity(intent);
-//        }
-//        finish();
-//    }
+    private void nextActivityKhachHang() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null){
+
+            Intent intent = new Intent(this, DangNhap_Activity.class);
+            startActivity(intent);
+        }else {
+            //da co tai khoan khach hang
+            Intent intent = new Intent(this, ManHinhKhachHang.class);
+            startActivity(intent);
+        }
+        finish();
+    }
 
 
 }
