@@ -67,11 +67,13 @@ public class DangNhap_Activity extends AppCompatActivity {
                 Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(o.getData());
                 try {
                     GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
+                    // Phương thức này trích xuất thông tin tài khoản Google từ kết quả Intent trả về sau khi người dùng đã đăng nhập thành công.
                     AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
                     auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isComplete()) {
+                                //Nếu quá trình đăng nhập thành công, phương thức này chuyển người dùng đến Màn hình Khách hàng
                                 auth = FirebaseAuth.getInstance();
                                 chuyen(ManHinhKhachHang.class);
                                 Toast.makeText(DangNhap_Activity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
@@ -88,25 +90,28 @@ public class DangNhap_Activity extends AppCompatActivity {
         }
     });
 
+    //Tạo sự kiện khi click vào các nút
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
         anhxa();
 
+        //nút đăng ký
         dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chuyen(DangKy_Activity.class);
             }
         });
-
+        //nút đăng nhập
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dangnhap();
             }
         });
+        //nút quên mật khẩu
         quenMK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,8 +128,11 @@ public class DangNhap_Activity extends AppCompatActivity {
 
     //quen mat khau
     private void quenMK() {
+        //Tạo một đối tượng AlertDialog.Builder với context là activity hiện tại.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Lấy một đối tượng LayoutInflater để inflate (nạp) layout từ tệp xml.
         LayoutInflater layoutInflater = getLayoutInflater();
+        //Inflate layout từ tệp xml dialog_quenpass.xml để tạo ra một đối tượng View.
         View view = layoutInflater.inflate(R.layout.dialog_quenpass, null, false);
         builder.setView(view);
         Dialog dialog = builder.create();
@@ -141,8 +149,11 @@ public class DangNhap_Activity extends AppCompatActivity {
         });
     }
 
+    //có nhiệm vụ gửi yêu cầu khôi phục mật khẩu đến email được cung cấp bởi người dùng
     private void quenPass(EditText email, Dialog dialog) {
+        // Lấy một thể hiện của FirebaseAuth để thực hiện các hoạt động liên quan đến xác thực người dùng trong Firebase.
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        //Lấy địa chỉ email từ EditText được truyền vào qua tham số email.
         String emailAddress = email.getText().toString();
         if (emailAddress.isEmpty()) {
             Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
@@ -150,8 +161,12 @@ public class DangNhap_Activity extends AppCompatActivity {
         }
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
-        progressDialog.show();
+        progressDialog.show();//Hiển thị hộp thoại tiến trình lên màn hình.
+
+        // Gửi yêu cầu khôi phục mật khẩu đến địa chỉ email đã được người dùng cung cấp
         auth.sendPasswordResetEmail(emailAddress)
+
+                // Thêm một listener để xử lý kết quả của việc gửi yêu cầu khôi phục mật khẩu.
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -164,6 +179,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                 });
     }
 
+    // ánh xạ ánh xạ các thành phần giao diện
     private void anhxa() {
         dangky = findViewById(R.id.btn_dangky);
         dangNhap = findViewById(R.id.btn_dangnhap);
@@ -171,7 +187,10 @@ public class DangNhap_Activity extends AppCompatActivity {
         matKhau = findViewById(R.id.edt_matkhau_dangnhap);
         quenMK = findViewById(R.id.tv_quenpass);
         progressDialog = new ProgressDialog(this);
-        db = FirebaseFirestore.getInstance();
+
+        db = FirebaseFirestore.getInstance();//Lấy một thể hiện của Firestore Database bằng cách sử dụng phương thức getInstance().
+
+        //Tạo các tùy chọn cho đăng nhập Google, bao gồm việc yêu cầu token ID, email.
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
