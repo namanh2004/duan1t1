@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class DangKy_Activity extends AppCompatActivity {
+    //Khai báo các biến
     private EditText email, matKhau, reMatKhau;
     private Button dangKy;
     private ProgressDialog progressDialog;
