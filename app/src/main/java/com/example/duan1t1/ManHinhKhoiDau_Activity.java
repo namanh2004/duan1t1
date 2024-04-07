@@ -22,13 +22,9 @@ private  Intent intent;
         dangNhap = findViewById(R.id.btn_dangNhap_begin);
         dangKy = findViewById(R.id.tv_dangky_begin);
 
-        //Admin
+
         nextActivityAdmin();
-
-        //NhanVien
         nextActivityNhanVien();
-
-        //KhachHang
         nextActivityKhachHang();
 
         dangNhap.setOnClickListener(new View.OnClickListener() {
