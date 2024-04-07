@@ -23,9 +23,9 @@ private  Intent intent;
         dangKy = findViewById(R.id.tv_dangky_begin);
 
 
-        nextActivityAdmin();
-        nextActivityNhanVien();
-        nextActivityKhachHang();
+        nextActivityAdmin(); //admin
+        nextActivityNhanVien();//nhanvien
+        nextActivityKhachHang();//khachhang
 
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
