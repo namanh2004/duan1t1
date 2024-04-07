@@ -201,9 +201,12 @@ public class DangNhap_Activity extends AppCompatActivity {
 
     //dang nhap
     public void dangnhap() {
-        String mEmail = email.getText().toString().trim();
-        String mPass = matKhau.getText().toString().trim();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String mEmail = email.getText().toString().trim();//Lấy địa chỉ email từ EditText "email" và loại bỏ các khoảng trắng ở đầu và cuối chuỗi.
+
+        String mPass = matKhau.getText().toString().trim();// Lấy mật khẩu từ EditText "mật khẩu" và loại bỏ các khoảng trắng ở đầu và cuối chuỗi.
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();//Lấy một thể hiện của FirebaseAuth để thực hiện quá trình đăng nhập.
+
         if (email.getText().toString().isEmpty() || matKhau.getText().toString().isEmpty()) {
             Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
             return;
@@ -212,8 +215,9 @@ public class DangNhap_Activity extends AppCompatActivity {
         progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
         progressDialog.show();
 
-
+        //Thực hiện đăng nhập bằng email và mật khẩu đã nhập. Một listener được thêm vào để xử lý kết quả của việc đăng nhập.
         mAuth.signInWithEmailAndPassword(mEmail, mPass)
+                //Thêm một listener để xử lý kết quả của việc đăng nhập.
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -231,37 +235,45 @@ public class DangNhap_Activity extends AppCompatActivity {
                 });
     }
 
-    //check ban
+    // kiểm tra trạng thái của tài khoản sau khi người dùng đăng nhập
     private void checkBan(FirebaseUser user) {
-        db.collection("user").whereEqualTo("maUser", user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (!task.isComplete()) {
-                    Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (task.isSuccessful()) {
-                    if (task.getResult().toObjects(User.class).get(0).getTrangThai() == 1) {
-                        DangNhap(task.getResult().toObjects(User.class).get(0));
-                    } else {
-                        Toast.makeText(DangNhap_Activity.this, "Tài khoản bạn đã bị đình chỉ vui lòng liên hệ", Toast.LENGTH_SHORT).show();
-                        FirebaseAuth.getInstance().signOut();
-                        finish();
-                    }
 
-                }
-            }
-        });
+        //Truy vấn trong collection "user" để tìm các tài khoản có mã người dùng (maUser) trùng khớp với ID của người dùng hiện tại.
+        db.collection("user").whereEqualTo("maUser", user.getUid()).get()
+
+                //Thêm một listener để xử lý kết quả của truy vấn. Khi truy vấn hoàn thành, sẽ được gọi hàm onComplete()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (!task.isComplete()) {
+                            Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        //Kiểm tra xem truy vấn có thành công không. Nếu thành công, tiếp tục xử lý kết quả.
+                        if (task.isSuccessful()) {
+                            if (task.getResult().toObjects(User.class).get(0).getTrangThai() == 1) {
+                                //nếu thành công gọi phương thức đăng nhập và truyền một số đối tượng
+                                DangNhap(task.getResult().toObjects(User.class).get(0));
+                            } else {
+                                //nếu không thành công thì đăng xuất người dùng khỏi fire base
+                                Toast.makeText(DangNhap_Activity.this, "Tài khoản bạn đã bị đình chỉ vui lòng liên hệ", Toast.LENGTH_SHORT).show();
+                                FirebaseAuth.getInstance().signOut();
+                                finish();
+                            }
+
+                        }
+                    }
+                });
     }
 
-    //chuyen
+    //chuyển màn hình
     private void chuyen(Class a) {
         Intent intent = new Intent(this, a);
         startActivity(intent);
     }
 
 
-    //Dang nhap user
+    //xác định loại tài khoản của người dùng sau khi đăng nhập và chuyển hướng đến màn hình tương ứng với loại tài khoản đó.
     private void DangNhap(User user) {
         if (user.getChucVu() == 1) {
             intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
@@ -273,6 +285,8 @@ public class DangNhap_Activity extends AppCompatActivity {
             Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
         }
         finishAffinity();
+        // Kiểm tra xem activity hiện tại có đang được hoàn thành (finishing) không.
+        // Nếu không, phương thức sẽ kết thúc ở đây và không thực hiện các lệnh tiếp theo.
         if (!isFinishing()) {
             return;
         }
@@ -280,6 +294,7 @@ public class DangNhap_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // thực hiện các công việc dọn dẹp và giải phóng tài nguyên cần thiết trước khi activity bị hủy.
     @Override
     protected void onDestroy() {
         super.onDestroy();
