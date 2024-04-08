@@ -37,7 +37,7 @@ public class DangKy_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
-        //gọi ánh xạ để
+        //gọi ánh xạ
         anhXa();
         dangKy.setOnClickListener(new View.OnClickListener() {
             @Override
