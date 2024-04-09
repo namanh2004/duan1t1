@@ -235,6 +235,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         });
     }
 
+    //thongbao
     private void guiThongBao() {
         String id = UUID.randomUUID().toString();
         db.collection("thongBao").document(id).set(new ThongBao(id, user.getUid(), "Có đơn hàng mới của " + user.getUid(), 2, new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -245,7 +246,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
             }
         });
     }
-
+//sanphamm
     private String getTenLoai(String maHang) {
         for (Hang s : list_hang) {
             if (maHang.equals(s.getMaHang())) {

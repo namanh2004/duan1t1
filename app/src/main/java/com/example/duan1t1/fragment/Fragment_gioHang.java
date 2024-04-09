@@ -75,6 +75,7 @@ public class Fragment_gioHang extends Fragment {
         anhXa(view);
     }
 
+    //anh xa view
     private void anhXa(View view) {
         list_gio = new ArrayList<>();
         list_hang = new ArrayList<>();
@@ -98,6 +99,8 @@ public class Fragment_gioHang extends Fragment {
         });
 
     }
+
+    //thong tin trong gio hang
     public User getThongTin() {
         final User[] user1 = new User[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -136,6 +139,7 @@ public class Fragment_gioHang extends Fragment {
         return user1[0];
     }
 
+//dialog dat hang
     private void diaLogDatHang() {
         final boolean[] check = {false};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -160,6 +164,7 @@ public class Fragment_gioHang extends Fragment {
 
     }
 
+    //mua hang
     private void mua() {
         List<String> listMaGio = getListMa();
         if (listMaGio.size() <= 0) {
@@ -202,6 +207,7 @@ public class Fragment_gioHang extends Fragment {
 
     }
 
+    //gui thong bao
     private void guiThongBao() {
         String id = UUID.randomUUID().toString();
         db.collection("thongBao").document(id).set(new ThongBao(id, user.getUid(), "Có đơn hàng mới của " + user.getUid(), 2, new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -234,6 +240,7 @@ public class Fragment_gioHang extends Fragment {
 
     }
 
+    //hang
     private void getHang() {
         db.collection("hang").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -273,6 +280,7 @@ public class Fragment_gioHang extends Fragment {
         });
     }
 
+    //sanpham
     private void getSP() {
         db.collection("sanPham").orderBy("time").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
