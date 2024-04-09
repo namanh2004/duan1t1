@@ -65,9 +65,11 @@ public class DangNhap_Activity extends AppCompatActivity {
                     GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
                     //Nếu lấy thông tin tài khoản thành công, sử dụng GoogleAuthProvider.getCredential() để lấy thông tin xác thực từ tài khoản Google.
                     AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(),null);
+                    //Tiếp theo, sử dụng thông tin xác thực để đăng nhập vào Firebase Authentication bằng phương thức signInWithCredential().
                     auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            //Trong trường hợp đăng nhập thành công, chuyển đến màn hình ManHinhKhachHang và hiển thị thông báo "Đăng nhập thành công".
                             if(task.isComplete()){
                                 auth = FirebaseAuth.getInstance();
                                 chuyen(ManHinhKhachHang.class);
@@ -77,6 +79,7 @@ public class DangNhap_Activity extends AppCompatActivity {
                             }
                         }
                     });
+                    //Trong trường hợp xảy ra lỗi, hiển thị thông báo "Lỗi".
                 } catch (ApiException e) {
                     Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                     throw new RuntimeException(e);
