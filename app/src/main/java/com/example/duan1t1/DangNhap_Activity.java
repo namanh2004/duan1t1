@@ -126,9 +126,13 @@ public class DangNhap_Activity extends AppCompatActivity {
         activityResultLauncher.launch(intent);
     }
 
-    //quen mat khau
+    //
+    //Đoạn mã này định nghĩa phương thức quenMK(), có tác dụng mở
+    // một hộp thoại (dialog) cho phép người dùng nhập địa chỉ email để yêu cầu đặt lại mật khẩu.
     private void quenMK() {
+        //Tạo một đối tượng AlertDialog.Builder để xây dựng hộp thoại.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Lấy ra một instance của LayoutInflater, được sử dụng để inflate (nạp) layout từ tệp XML.
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.dialog_quenpass, null, false);
         builder.setView(view);
@@ -136,7 +140,8 @@ public class DangNhap_Activity extends AppCompatActivity {
         dialog.show();
         EditText email = view.findViewById(R.id.edt_email_quen);
         Button gui = view.findViewById(R.id.btn_quen);
-
+        // Gán một sự kiện nhấn cho nút "Gửi" trong hộp thoại. Khi người dùng nhấn nút này,
+        // phương thức onClick() được gọi và gọi phương thức quenPass() để xử lý yêu cầu đặt lại mật khẩu.
         gui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,8 +151,12 @@ public class DangNhap_Activity extends AppCompatActivity {
         });
     }
 
+    //Đoạn mã này định nghĩa phương thức quenPass(EditText email, Dialog dialog),
+    // được gọi khi người dùng nhấn nút "Gửi" trong hộp thoại quên mật khẩu
     private void quenPass(EditText email, Dialog dialog) {
+        // Lấy ra một thể hiện của lớp FirebaseAuth, được sử dụng để quản lý xác thực người dùng
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        //Lấy địa chỉ email mà người dùng đã nhập từ EditText và chuyển thành chuỗi.
         String emailAddress = email.getText().toString();
         if (emailAddress.isEmpty()) {
             Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
@@ -156,10 +165,13 @@ public class DangNhap_Activity extends AppCompatActivity {
         progressDialog.setTitle("Loading");
         progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
         progressDialog.show();
+        //Đặt một OnCompleteListener để xử lý kết quả của việc gửi email.
         auth.sendPasswordResetEmail(emailAddress)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
+                        //kiểm tra xem việc gửi email đã hoàn thành thành công hay không. Nếu thành công (task.isSuccessful()),
+                        // hiển thị một thông báo cho người dùng thông báo rằng email đã được gửi và đóng hộp thoại quên mật khẩu (dialog.dismiss()).
                         if (task.isSuccessful()) {
                             progressDialog.cancel();
                             Toast.makeText(DangNhap_Activity.this, "Đã gửi link khôi phục hãy kiểm tra email", Toast.LENGTH_SHORT).show();
