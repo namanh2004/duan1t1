@@ -31,37 +31,49 @@ private ProgressDialog progressDialog;
 private FirebaseFirestore db ;
     private Intent intent;
     private DocumentReference reference;
+
+    //thiết lập giao diện cho Activity và khởi tạo các thành phần cần thiết.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
-       anhXa();
+       anhXa(); // gọi hàm ánh xạ
         dangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dangKy();
+                dangKy(); // thực hiện chức năng đăng ký
             }
         });
     }
 
     //anh xa
     private void anhXa(){
+        //ánh xạ edt đăng ký
         email = findViewById(R.id.edt_email_dangnky);
+        //ánh xạ edt mật khẩu
         matKhau = findViewById(R.id.edt_matkhau_dangky);
+        //ánh xạ edt nhập lại mk
         reMatKhau = findViewById(R.id.edt_rematkhau_dangky);
+        //ánh xạ button đăng ký
         dangKy = findViewById(R.id.btn_dangky_on);
+
+        //// tạo một đối tượng ProgressDialog mới. ProgressDialog là một hộp thoại hiển thị
+        // thông báo cho người dùng về tiến trình đang diễn ra hoặc chờ đợi.
         progressDialog = new ProgressDialog(this);
 
     }
 
    //code dang ky
    public void dangKy(){
+        // Lấy email và password từ EditTexts
        String email1 = email.getText().toString().trim();
        String pass1 = matKhau.getText().toString().trim();
+       //Khởi tạo một đối tượng FirebaseAuth (mAuth) để sử dụng các phương thức của Firebase Authentication.
        FirebaseAuth mAuth = FirebaseAuth.getInstance();
        progressDialog.setTitle("Loading");
        progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
        progressDialog.show();
+       // phần này check các lỗi
        if (email1.isEmpty()||pass1.isEmpty()){
            Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
            progressDialog.cancel();
@@ -80,6 +92,7 @@ private FirebaseFirestore db ;
                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
+                       //kiểm tra nếu quá trình đăng ký thành công
                        if (task.isSuccessful()) {
                            Intent intent = new Intent(DangKy_Activity.this,ManHinhKhachHang.class);
                            startActivity(intent);
@@ -92,13 +105,18 @@ private FirebaseFirestore db ;
    }
 
 
-   //Tao user
+   //phương thức này là tạo một tài khoản người dùng mới trong cơ sở dữ liệu
+   // Firestore của Firebase sau khi người dùng đã đăng ký thành công thông qua Firebase Authentication.
    private void taoUser(){
+        // Lấy ra thông tin của người dùng hiện tại đã đăng ký từ Firebase Authentication.
        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       // Khởi tạo một đối tượng Firestore để thao tác với cơ sở dữ liệu Firestore.
        db=FirebaseFirestore.getInstance();
+       // Kiểm tra xem có người dùng nào đăng nhập hay không
        if (user==null){
            return;
        }
+       //Tạo một tài liệu mới trong bộ sưu tập "user" của Firestore với ID của người dùng là UID của người dùng hiện tại
        db.collection("user").document(user.getUid()).set(new User(user.getUid(),user.getEmail(),"",1,0l,3)).addOnSuccessListener(new OnSuccessListener<Void>() {
            @Override
            public void onSuccess(Void unused) {
@@ -106,6 +124,7 @@ private FirebaseFirestore db ;
                progressDialog.cancel();
                finishAffinity();
            }
+           //Đăng ký các lắng nghe cho kết quả thành công và thất bại của việc thiết lập dữ liệu
        }).addOnFailureListener(new OnFailureListener() {
            @Override
            public void onFailure(@NonNull Exception e) {
