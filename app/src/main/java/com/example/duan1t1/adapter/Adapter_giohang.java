@@ -16,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
 import com.example.duan1t1.R;
 import com.example.duan1t1.ThongTinTaiKhoan;
 import com.example.duan1t1.fragment.Fragment_gioHang;
@@ -43,15 +42,16 @@ import java.util.Locale;
 import java.util.UUID;
 
 public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHolder> {
-    List<GioHang> list_gio;
-    List<SanPham> list_sanPham;
-    List<Hang> list_hang;
+    List<GioHang> list_gio; // Danh sách sản phẩm trong giỏ hàng
+    List<SanPham> list_sanPham; // Danh sách sản phẩm
+    List<Hang> list_hang; // Danh sách loại hàng
     Context context;
-    Fragment_gioHang gioHang;
+    Fragment_gioHang gioHang; // Fragment giỏ hàng
     FirebaseFirestore db;
     FirebaseUser user;
-    SanPham sp;
+    SanPham sp; // Sản phẩm
 
+    // Constructor của Adapter giỏ hàng
     public Adapter_giohang(List<GioHang> list_gio, List<SanPham> list_sanPham, List<Hang> list_hang, Context context, Fragment_gioHang gioHang) {
         this.list_gio = list_gio;
         this.list_sanPham = list_sanPham;
@@ -72,17 +72,20 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // Lấy link ảnh của sản phẩm từ mã sản phẩm
         String link = laylink(list_gio.get(position).getMaSanPham());
         gioHang.tinhTong();
         if (link.isEmpty()) {
             return;
         }
+        // Hiển thị ảnh sản phẩm
         Glide.with(context).load(link).
                 error(R.drawable.baseline_crop_original_24).into(holder.anh);
         sp = getSanPham(list_gio.get(position).getMaSanPham());
         if (sp == null) {
             return;
         }
+        // Hiển thị thông tin sản phẩm
         holder.tenSP.setText(sp.getTenSP());
         holder.giaSP.setText("Giá: " + NumberFormat.getNumberInstance(Locale.getDefault()).format(sp.getGia()) + " VND");
         String tenHang = getTenLoai(sp.getMaHang());
@@ -93,7 +96,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         holder.soLuong.setText("Số lượng: " + list_gio.get(position).getSoLuong() + "");
         holder.kichCo.setText("Kích cỡ: " + list_gio.get(position).getKichCo() + "");
 
-
+        // Xử lý sự kiện khi người dùng click vào nút xóa
         holder.xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,6 +122,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
             }
         });
 
+        // Xử lý sự kiện khi người dùng click vào nút mua
         holder.mua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,13 +132,13 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
 
     }
 
+    // Phương thức hiển thị dialog khi người dùng muốn đặt hàng
     private void diaLogDatHang(int p) {
         final boolean[] check = {false};
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setIcon(R.drawable.baseline_question_mark_24);
         builder.setTitle("Yêu cầu xác thực");
         builder.setMessage("Bạn có muốn xác nhận đơn hàng ?");
-
         builder.setNegativeButton("Đặt hàng", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -149,9 +153,9 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
             }
         });
         builder.create().show();
-
     }
 
+    // Phương thức lấy thông tin người dùng để đặt hàng
     public User getThongTin(int p) {
         final User[] user1 = new User[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -189,6 +193,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         return user1[0];
     }
 
+    // Phương thức thêm đơn hàng
     private void them(int p) {
         List<Don> listDon = new ArrayList<>();
         listDon.add(new Don(list_gio.get(p).getMaSanPham(), list_gio.get(p).getSoLuong()));
@@ -212,6 +217,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
                 });
     }
 
+    // Phương thức tính tổng giá sản phẩm
     private Long TongGiaSP(int p) {
         for (SanPham g : list_sanPham) {
             if (list_gio.get(p).getMaSanPham().equals(g.getMaSp())) {
@@ -221,6 +227,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         return 0l;
     }
 
+    // Phương thức xóa sản phẩm khỏi giỏ hàng
     private void xoa(String maGio) {
         db.collection("gioHang").document(maGio).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -235,7 +242,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         });
     }
 
-    //thongbao
+    // Phương thức gửi thông báo
     private void guiThongBao() {
         String id = UUID.randomUUID().toString();
         db.collection("thongBao").document(id).set(new ThongBao(id, user.getUid(), "Có đơn hàng mới của " + user.getUid(), 2, new Date().getTime())).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -246,7 +253,8 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
             }
         });
     }
-//sanphamm
+
+    // Phương thức lấy tên loại hàng từ mã loại hàng
     private String getTenLoai(String maHang) {
         for (Hang s : list_hang) {
             if (maHang.equals(s.getMaHang())) {
@@ -256,6 +264,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         return null;
     }
 
+    // Phương thức lấy thông tin sản phẩm từ mã sản phẩm
     private SanPham getSanPham(String maSP) {
         for (SanPham s : list_sanPham) {
             if (maSP.equals(s.getMaSp())) {
@@ -265,6 +274,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         return null;
     }
 
+    // Phương thức lấy link ảnh sản phẩm từ mã sản phẩm
     private String laylink(String maSP) {
         String link = "";
         for (SanPham s : list_sanPham) {
@@ -281,20 +291,21 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
         return list_gio.size();
     }
 
+    // Lớp ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView anh;
-        TextView tenSP, loaiSP, kichCo, soLuong, giaSP, mua, xoa;
+        ImageView anh; // Ảnh sản phẩm
+        TextView tenSP, loaiSP, kichCo, soLuong, giaSP, mua, xoa; // TextView hiển thị thông tin sản phẩm và các nút thực hiện hành động
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            anh = itemView.findViewById(R.id.imv_anh_sp_gioHang);
-            tenSP = itemView.findViewById(R.id.tv_tensp_gioHang);
-            giaSP = itemView.findViewById(R.id.tv_giasp_giohang);
-            loaiSP = itemView.findViewById(R.id.tv_thuonghieu_gioHang);
-            kichCo = itemView.findViewById(R.id.tv_kichcosp_giohang);
-            soLuong = itemView.findViewById(R.id.tv_soluongsp_giohang);
-            mua = itemView.findViewById(R.id.tv_mua_giohang);
-            xoa = itemView.findViewById(R.id.tv_xoa_giohang);
+            anh = itemView.findViewById(R.id.imv_anh_sp_gioHang); // Ánh xạ ImageView
+            tenSP = itemView.findViewById(R.id.tv_tensp_gioHang); // Ánh xạ TextView
+            giaSP = itemView.findViewById(R.id.tv_giasp_giohang); // Ánh xạ TextView
+            loaiSP = itemView.findViewById(R.id.tv_thuonghieu_gioHang); // Ánh xạ TextView
+            kichCo = itemView.findViewById(R.id.tv_kichcosp_giohang); // Ánh xạ TextView
+            soLuong = itemView.findViewById(R.id.tv_soluongsp_giohang); // Ánh xạ TextView
+            mua = itemView.findViewById(R.id.tv_mua_giohang); // Ánh xạ TextView
+            xoa = itemView.findViewById(R.id.tv_xoa_giohang); // Ánh xạ TextView
         }
     }
 }

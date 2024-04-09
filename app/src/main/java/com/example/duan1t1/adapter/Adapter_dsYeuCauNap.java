@@ -34,17 +34,16 @@ import java.util.Locale;
 
 public class Adapter_dsYeuCauNap extends RecyclerView.Adapter<Adapter_dsYeuCauNap.viewHolder> {
     private final Context context;
-    private final List<HashMap<String, Object>> list;
-    private final List<User> list_use;
+    private final List<HashMap<String, Object>> list; // Danh sách yêu cầu nạp tiền
+    private final List<User> list_use; // Danh sách người dùng
     FirebaseFirestore db;
 
-
+    // Constructor của Adapter
     public Adapter_dsYeuCauNap(Context context, List<HashMap<String, Object>> list, List<User> listUse) {
         this.context = context;
         this.list = list;
         this.list_use = listUse;
     }
-
 
     @NonNull
     @Override
@@ -57,85 +56,91 @@ public class Adapter_dsYeuCauNap extends RecyclerView.Adapter<Adapter_dsYeuCauNa
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+        // Sắp xếp danh sách theo thời gian
         list.sort(new Comparator<HashMap<String, Object>>() {
             @Override
             public int compare(HashMap<String, Object> o1, HashMap<String, Object> o2) {
-                return (int) (Long.parseLong(o2.get("timeSort").toString())-Long.parseLong(o1.get("timeSort").toString()));
+                return (int) (Long.parseLong(o2.get("timeSort").toString()) - Long.parseLong(o1.get("timeSort").toString()));
             }
         });
+
+        // Thiết lập dữ liệu cho các view trong ViewHolder
         holder.tv_Email.setText("Email: " + list.get(position).get("email").toString());
-        holder.tv_soTien.setText("+" + NumberFormat.getNumberInstance(Locale.getDefault()).format(list.get(position).get("sotien"))+" ");
+        holder.tv_soTien.setText("+" + NumberFormat.getNumberInstance(Locale.getDefault()).format(list.get(position).get("sotien")) + " ");
         holder.tv_maNG.setText("Mã người dùng: " + list.get(position).get("maND").toString());
         holder.tv_maGD.setText("Mã giao dịch: " + list.get(position).get("maGG").toString());
         String linkAnh = list.get(position).get("anh").toString();
         Glide.with(context).load(linkAnh)
                 .error(R.drawable.baseline_crop_original_24).into(holder.img_anhGD);
+
+        // Thiết lập màu sắc và trạng thái cho nút xác nhận và hủy
         String xam = "#D3D3CF";
         String cam = "#E6903B";
-
-        if (Long.parseLong(list.get(position).get("trangThai").toString())==1){
+        if (Long.parseLong(list.get(position).get("trangThai").toString()) == 1) {
             holder.btn_Huy.setEnabled(false);
             holder.btn_xacNhan.setEnabled(false);
             holder.btn_xacNhan.setText("Đã xác nhận");
             holder.btn_Huy.setBackgroundColor(Color.parseColor(xam));
             holder.btn_xacNhan.setBackgroundColor(Color.parseColor(xam));
-        }else {
+        } else {
             holder.btn_Huy.setEnabled(true);
             holder.btn_xacNhan.setEnabled(true);
             holder.btn_xacNhan.setText("Xác nhận");
             holder.btn_Huy.setBackgroundColor(Color.parseColor(cam));
             holder.btn_xacNhan.setBackgroundColor(Color.parseColor(cam));
         }
+
+        // Xử lý sự kiện khi người dùng click vào hình ảnh để xem
         holder.img_anhGD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Showanh(linkAnh);
             }
         });
-        User user = getUser(list.get(position),list_use);
+
+        // Lấy thông tin người dùng
+        User user = getUser(list.get(position), list_use);
+
+        // Xử lý sự kiện khi người dùng click vào nút xác nhận
         holder.btn_xacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xacNhan(position,user);
+                xacNhan(position, user);
             }
         });
     }
 
+    // Hiển thị ảnh lớn khi người dùng click vào hình ảnh nhỏ
     private void Showanh(String anh) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        View view = ((Activity)context).getLayoutInflater().inflate(R.layout.dialog_anh,null,false);
+        View view = ((Activity) context).getLayoutInflater().inflate(R.layout.dialog_anh, null, false);
         builder.setView(view);
         Dialog dialog = builder.create();
         dialog.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         ImageView imageView = view.findViewById(R.id.imv_anh_gg);
-        Log.e("TAG", "Showanh: "+anh );
-//        imageView.setImageDrawable(anh.getDrawable());
         Glide.with(context).load(anh)
                 .error(R.drawable.baseline_crop_original_24).into(imageView);
     }
 
-
-    private void xacNhan(int p,User user) {
+    // Xác nhận yêu cầu nạp tiền và cập nhật số dư của người dùng
+    private void xacNhan(int p, User user) {
         db = FirebaseFirestore.getInstance();
         Long soTien = Long.valueOf(list.get(p).get("sotien").toString());
         Long soDU = user.getSoDu();
-        Log.e("TAG","SODU"+soDU);
-        Long tongTien = soDU+soTien;
+        Long tongTien = soDU + soTien;
         String mND = list.get(p).get("maND").toString();
         HashMap<String, Object> tien = new HashMap<>();
         tien.put("soDu", tongTien);
-        Log.e("TAG", "xacNhan: "+soDU );
         db.collection("user").document(mND).update(tien).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isComplete()) {
-
-                    list.get(p).put("trangThai",1);
+                    list.get(p).put("trangThai", 1);
                     db.collection("naptien").document(list.get(p).get("maGG").toString()).set(list.get(p)).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if (!task.isComplete()){
+                            if (!task.isComplete()) {
                                 Toast.makeText(context, "Lỗi", Toast.LENGTH_SHORT).show();
                             }
                             Toast.makeText(context, "Thành công", Toast.LENGTH_SHORT).show();
@@ -146,21 +151,21 @@ public class Adapter_dsYeuCauNap extends RecyclerView.Adapter<Adapter_dsYeuCauNa
         });
     }
 
-    private User getUser(HashMap<String,Object> map, List<User> list_use) {
+    // Lấy thông tin người dùng từ danh sách người dùng
+    private User getUser(HashMap<String, Object> map, List<User> list_use) {
         User user = new User();
         user.setSoDu(0l);
-        for (User use : list_use){
-            if (map.get("maND").equals(use.getMaUser())){
+        for (User use : list_use) {
+            if (map.get("maND").equals(use.getMaUser())) {
                 return use;
             }
         }
-        return  user;
+        return user;
     }
-
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list.size(); // Trả về số lượng yêu cầu nạp tiền trong danh sách
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
