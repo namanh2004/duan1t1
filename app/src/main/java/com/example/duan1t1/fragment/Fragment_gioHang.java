@@ -75,6 +75,7 @@ public class Fragment_gioHang extends Fragment {
         anhXa(view);
     }
 
+    //anh xa view
     private void anhXa(View view) {
         list_gio = new ArrayList<>();
         list_hang = new ArrayList<>();
@@ -98,6 +99,8 @@ public class Fragment_gioHang extends Fragment {
         });
 
     }
+
+    //thong tin trong gio hang
     public User getThongTin() {
         final User[] user1 = new User[1];
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -135,6 +138,7 @@ public class Fragment_gioHang extends Fragment {
         });
         return user1[0];
     }
+
 
     private void diaLogDatHang() {
         final boolean[] check = {false};
