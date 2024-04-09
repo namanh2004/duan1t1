@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="#2196F3"
+        android:background="#8BC34A"
         app:titleTextColor="@color/white"
         android:id="@+id/toolbar_nhanvien"
         app:menu="@menu/menu_toolbar"
@@ -23,7 +23,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
+        android:background="#8BC34A"
         app:itemActiveIndicatorStyle="@drawable/shape_icon2"
         app:itemIconTint="@color/white"
         android:id="@+id/bnv_NhanVien"

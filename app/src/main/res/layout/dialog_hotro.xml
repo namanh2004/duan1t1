@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btn_xacnhan"
+            android:background="@drawable/btn_hotro"
             android:text="Yêu cầu hỗ trợ"
             android:textColor="@color/white"
             android:textStyle="bold" />
