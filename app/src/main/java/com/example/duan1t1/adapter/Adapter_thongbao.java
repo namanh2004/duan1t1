@@ -47,3 +47,10 @@ public class Adapter_thongbao extends BaseAdapter {
         return convertView;
     }
 }
+//          Constructor: Constructor của Adapter nhận vào một danh sách thông báo và một đối tượng Context. Danh sách này sẽ được hiển thị và Context sẽ được sử dụng để lấy LayoutInflater.
+//
+//        getCount(): Phương thức này trả về số lượng phần tử trong danh sách thông báo.
+//
+//        getItem() và getItemId(): Hai phương thức này chưa được implement và không được sử dụng trong code này.
+//
+//        getView(): Phương thức này tạo và cấu hình mỗi View item trong danh sách. Nó inflate layout từ file item_thongbao.xml, sau đó gán nội dung của thông báo từ danh sách thông báo vào TextView có ID là tv_thongbao trong layout.

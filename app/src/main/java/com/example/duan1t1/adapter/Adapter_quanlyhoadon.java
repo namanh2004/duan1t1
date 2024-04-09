@@ -310,7 +310,7 @@ public class Adapter_quanlyhoadon extends RecyclerView.Adapter<Adapter_quanlyhoa
     }
 
     private void hoanTien(User user, Long tienHoan) {
-        
+
         db.collection("user").document(user.getMaUser()).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -402,3 +402,26 @@ public class Adapter_quanlyhoadon extends RecyclerView.Adapter<Adapter_quanlyhoa
 
     }
 }
+//        Constructor: Constructor của Adapter nhận vào ba danh sách là danh sách sản phẩm, danh sách người dùng và danh sách đơn hàng, cùng với một Context. Constructor này được sử dụng để khởi tạo Adapter và các thành phần cần thiết.
+//
+//        onCreateViewHolder(): Phương thức này tạo một ViewHolder mới khi RecyclerView cần. Nó inflate layout từ file item_ql_don_hang.xml và trả về một viewHolder mới chứa các thành phần giao diện trong layout đó.
+//
+//        onBindViewHolder(): Phương thức này gán dữ liệu vào ViewHolder khi RecyclerView yêu cầu. Nó lấy thông tin của mỗi đơn hàng từ danh sách đơn hàng và danh sách người dùng, sau đó gán thông tin đó vào các thành phần giao diện của ViewHolder để hiển thị lên giao diện người dùng. Nó cũng xử lý sự kiện khi người dùng nhấn vào các nút "Hủy" hoặc "Xác nhận" để cập nhật trạng thái của đơn hàng.
+//
+//        chiTietSanPhamMua(): Phương thức này hiển thị một dialog để hiển thị chi tiết các sản phẩm trong đơn hàng khi người dùng nhấn vào một đơn hàng.
+//
+//        trangThai(): Phương thức này cập nhật trạng thái của đơn hàng dựa trên thao tác của người dùng, như "Đã hủy" hoặc "Đã xác nhận".
+//
+//        setTop(): Phương thức này cập nhật top 10 sản phẩm bán chạy nhất sau khi đơn hàng đã được xác nhận.
+//
+//        capnhatSoluong(): Phương thức này cập nhật số lượng sản phẩm trong kho sau khi một đơn hàng đã được xác nhận.
+//
+//        guiThongBao(): Phương thức này gửi thông báo cho người dùng sau khi đơn hàng đã được xác nhận.
+//
+//        huyDon() và hoanTien(): Hai phương thức này được sử dụng để hủy đơn hàng và hoàn lại tiền cho người dùng khi cần thiết.
+//
+//        getdata(): Phương thức này lấy thông tin về người dùng và đơn hàng để hiển thị trên giao diện.
+//
+//        getItemCount(): Phương thức này trả về số lượng đơn hàng trong danh sách.
+//
+//        viewHolder: Lớp ViewHolder để giữ các thành phần giao diện cho mỗi item trong RecyclerView. Nó bao gồm các TextView để hiển thị thông tin của mỗi đơn hàng, cùng với các ImageButton để thực hiện các thao tác như "Hủy" hoặc "Xác nhận".

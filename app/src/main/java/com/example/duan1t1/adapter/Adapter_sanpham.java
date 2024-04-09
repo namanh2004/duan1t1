@@ -188,3 +188,16 @@ public class Adapter_sanpham extends RecyclerView.Adapter<Adapter_sanpham.ViewDo
 
 
 }
+//        Constructor: Adapter này nhận vào một danh sách sản phẩm (List<SanPham>), một context, một đối tượng QuanLyGiay, và một giá trị i đại diện cho quyền người dùng. Constructor này được sử dụng để khởi tạo Adapter và các biến cần thiết.
+//
+//        onCreateViewHolder: Phương thức này tạo và trả về một ViewHolder mới. ViewHolder này được tạo bằng cách inflate layout từ file item_quan_ly_giay.xml.
+//
+//        onBindViewHolder: Phương thức này gán dữ liệu vào ViewHolder khi RecyclerView yêu cầu. Đối với mỗi item trong danh sách sản phẩm, nó hiển thị hình ảnh, tên sản phẩm, giá, số lượng, thông tin về thương hiệu và năm sản xuất. Nếu người dùng có quyền, nó cho phép xóa hoặc cập nhật sản phẩm.
+//
+//        Update: Phương thức này được gọi khi người dùng chọn cập nhật sản phẩm. Nó tạo một dialog để cập nhật thông tin sản phẩm.
+//
+//        getItemCount: Phương thức này trả về số lượng item trong danh sách sản phẩm.
+//
+//        getFilter: Phương thức này được sử dụng để cung cấp chức năng tìm kiếm. Nó thực hiện việc lọc danh sách sản phẩm dựa trên các kí tự nhập vào và cập nhật danh sách hiển thị.
+//
+//        ViewDolder class: Là một inner class đại diện cho ViewHolder. Nó giữ các thành phần giao diện của mỗi item trong RecyclerView.
