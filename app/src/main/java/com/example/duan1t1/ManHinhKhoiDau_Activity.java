@@ -23,8 +23,6 @@ private  Intent intent;
         dangKy = findViewById(R.id.tv_dangky_begin);
 
 
-
-
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
