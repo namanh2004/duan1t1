@@ -38,40 +38,44 @@ public class Adapter_itemCuaHang extends RecyclerView.Adapter<Adapter_itemCuaHan
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Tạo ViewHolder mới cho mỗi item trong RecyclerView
         return new ViewHolder(((Activity) context).getLayoutInflater()
                 .inflate(R.layout.item_cuahang_sanpham, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        // Gán dữ liệu vào ViewHolder
         Glide.with(context).load(list.get(position).getAnh()).
                 error(R.drawable.baseline_crop_original_24).into(holder.anh);
         holder.ten.setText(list.get(position).getTenSP());
         holder.gia.setText("Giá: " + NumberFormat.getNumberInstance(Locale.getDefault()).format(list.get(position).getGia()) +" VND");
+        // Xử lý sự kiện khi nhấn vào một item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SeeSanPham.class);
                 intent.putExtra("sanpham",list.get(position).getMaSp());
                 ((Activity)context).startActivity(intent);
-                // itent id sp sang màn hình chi tiết
+                // Chuyển sang màn hình chi tiết sản phẩm và truyền mã sản phẩm
             }
         });
     }
 
+    // Phương thức trả về Filter để tìm kiếm
     public Filter getFilter(){
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 if (constraint.toString().isEmpty()) {
-                    list = list_search;
+                    list = list_search; // Nếu chuỗi tìm kiếm rỗng, sử dụng lại danh sách gốc
                 } else {
                     List<SanPham> list1_spMoi = new ArrayList<>();
+                    // Lọc các sản phẩm theo chuỗi tìm kiếm
                     for (SanPham sp : list_search) {
                         if (sp.getTenSP().toLowerCase().trim().contains(constraint.toString().toLowerCase().trim())) {
                             list1_spMoi.add(sp);
                         }
-
                     }
                     list = list1_spMoi;
                 }
@@ -83,16 +87,19 @@ public class Adapter_itemCuaHang extends RecyclerView.Adapter<Adapter_itemCuaHan
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
+                // Hiển thị kết quả sau khi lọc
                 list = (List<SanPham>) results.values;
                 notifyDataSetChanged();
             }
         };
     }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
 
+    // ViewHolder cho mỗi item trong RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView anh;
         TextView ten, gia;

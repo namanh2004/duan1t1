@@ -48,3 +48,17 @@ public class Adapter_hang extends BaseAdapter {
         return view;
     }
 }
+//        Constructor:
+//        Chú thích về mục đích của constructor và các đối số nó nhận.
+//        getCount():
+//        Chú thích rằng phương thức này trả về số lượng phần tử trong danh sách list.
+//        getItem():
+//        Chú thích rằng phương thức này trả về đối tượng Hang ở vị trí cụ thể trong danh sách list.
+//        getItemId():
+//        Chú thích rằng phương thức này trả về ID của phần tử tại vị trí cụ thể trong danh sách.
+//        Giải thích rằng trong trường hợp này, nó trả về 0 vì không có ID được sử dụng trong Adapter.
+//        getView():
+//        Chú thích về cách phương thức này tạo và trả về một View để hiển thị dữ liệu tại vị trí cụ thể trong danh sách.
+//        Giải thích rằng nó sử dụng LayoutInflater để inflate layout từ file XML.
+//        Chú thích về việc gắn dữ liệu từ đối tượng Hang vào các thành phần UI trong layout (ví dụ: TextView).
+//        Mô tả về cách dữ liệu được hiển thị hoặc xử lý trong mỗi View.
