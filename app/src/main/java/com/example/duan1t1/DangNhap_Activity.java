@@ -87,12 +87,16 @@ public class DangNhap_Activity extends AppCompatActivity {
             }
         }
     });
+
+    //Phương thức này được gọi khi Activity được tạo ra và có tác dụng khởi tạo
+    // giao diện của Activity và thiết lập các sự kiện lắng nghe cho các thành phần trong giao diện.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
-        anhxa();
+        anhxa();// gọi ánh xạ các nút
 
+        //Gán một sự kiện nhấn cho nút "Đăng ký" để chuyển đến màn hình đăng ký (DangKy_Activity).
         dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,12 +104,14 @@ public class DangNhap_Activity extends AppCompatActivity {
             }
         });
 
+        //Gán một sự kiện nhấn cho nút "Đăng nhập" để thực hiện phương thức dangnhap().
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dangnhap();
             }
         });
+        //Gán một sự kiện nhấn cho TextView "Quên mật khẩu" để mở hộp thoại quên mật khẩu (quenMK()).
         quenMK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
