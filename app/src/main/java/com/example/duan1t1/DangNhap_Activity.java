@@ -51,7 +51,9 @@ public class DangNhap_Activity extends AppCompatActivity {
     LinearLayout btnDangNhapGG;
     GoogleSignInClient client;
     FirebaseAuth auth;
+    // sử dụng để xử lý kết quả trả về từ một hoạt động khác (activity) mà bạn đã khởi chạy bằng phương thức startActivityForResult().
     private  final ActivityResultLauncher<Intent> activityResultLauncher
+            //Đây là một hợp đồng (contract) để nhận kết quả từ một hoạt động được khởi chạy bằng phương thức
             = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult o) {
