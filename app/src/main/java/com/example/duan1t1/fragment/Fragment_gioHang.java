@@ -240,6 +240,7 @@ public class Fragment_gioHang extends Fragment {
 
     }
 
+    //hang
     private void getHang() {
         db.collection("hang").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
