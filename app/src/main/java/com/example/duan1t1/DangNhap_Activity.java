@@ -219,9 +219,14 @@ public class DangNhap_Activity extends AppCompatActivity {
 
 //Sử dụng phương thức signInWithEmailAndPassword() của đối tượng mAuth để thực hiện xác thực đăng nhập bằng email và mật khẩu mà người dùng đã nhập.
         mAuth.signInWithEmailAndPassword(mEmail, mPass)
+                // Đặt một OnCompleteListener để xử lý kết quả của việc xác thực đăng nhập.
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        //kiểm tra xem việc đăng nhập đã thành công hay không. Nếu thành công (task.isSuccessful()),
+                        // lấy thông tin người dùng hiện tại và gọi phương thức checkBan()
+                        // để kiểm tra tình trạng của tài khoản người dùng. Nếu không thành công,
+                        // hiển thị một thông báo lỗi và ẩn hộp thoại tiến trình (progressDialog.cancel()).
                         if (task.isSuccessful()) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             checkBan(user);
@@ -236,11 +241,16 @@ public class DangNhap_Activity extends AppCompatActivity {
                 });
     }
 
-    //check ban
+    // được sử dụng để kiểm tra trạng thái của tài khoản người dùng trong cơ sở dữ liệu Firebase trước khi cho phép họ đăng nhập
     private void checkBan(FirebaseUser user) {
-        db.collection("user").whereEqualTo("maUser", user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        // Truy vấn cơ sở dữ liệu Firestore để lấy thông tin về người dùng dựa trên mã người dùng (maUser) đã được cung cấp.
+        db.collection("user").whereEqualTo("maUser", user.getUid()).get()
+                //Đặt một OnCompleteListener để xử lý kết quả của truy vấn.
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                // kiểm tra xem việc truy vấn đã hoàn thành thành công hay không (task.isSuccessful()).
+                // Nếu không thành công, hiển thị một thông báo lỗi.
                 if (!task.isComplete()) {
                     Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                     return;
@@ -259,14 +269,16 @@ public class DangNhap_Activity extends AppCompatActivity {
         });
     }
 
-    //chuyen
+    //được sử dụng để chuyển từ hoạt động hiện tại sang một hoạt động mới được
+    // chỉ định bởi đối số a, là một lớp (class) hoạt động trong ứng dụng Android.
     private void chuyen(Class a) {
         Intent intent = new Intent(this, a);
         startActivity(intent);
     }
 
 
-    //Dang nhap user
+    //được sử dụng để xác định loại người dùng
+    // (admin, nhân viên, hoặc khách hàng) và chuyển hướng đến màn hình tương ứng sau khi đăng nhập thành công
     private void DangNhap(User user) {
         if (user.getChucVu() == 1) {
             intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
@@ -281,6 +293,9 @@ public class DangNhap_Activity extends AppCompatActivity {
         if (!isFinishing()) {
             return;
         }
+        //Thêm cờ để xác định cách mà hoạt động mới sẽ được thêm vào stack. FLAG_ACTIVITY_CLEAR_TASK
+        // xóa tất cả các hoạt động trước đó khỏi stack khi hoạt động mới được khởi chạy,
+        // và FLAG_ACTIVITY_NEW_TASK tạo một task mới cho hoạt động mới.
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
