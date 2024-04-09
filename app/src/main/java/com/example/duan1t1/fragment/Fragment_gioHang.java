@@ -164,6 +164,7 @@ public class Fragment_gioHang extends Fragment {
 
     }
 
+    //mua hang
     private void mua() {
         List<String> listMaGio = getListMa();
         if (listMaGio.size() <= 0) {
