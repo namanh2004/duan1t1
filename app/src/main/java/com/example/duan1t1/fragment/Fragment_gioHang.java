@@ -279,6 +279,7 @@ public class Fragment_gioHang extends Fragment {
         });
     }
 
+    //sanpham
     private void getSP() {
         db.collection("sanPham").orderBy("time").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
