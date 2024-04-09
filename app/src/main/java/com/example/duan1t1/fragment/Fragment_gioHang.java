@@ -139,7 +139,7 @@ public class Fragment_gioHang extends Fragment {
         return user1[0];
     }
 
-
+//dialog dat hang
     private void diaLogDatHang() {
         final boolean[] check = {false};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
