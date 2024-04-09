@@ -198,3 +198,16 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.viewHolder>  {
 
 
 }
+//        Constructor: Adapter này nhận vào một Context và một danh sách các đối tượng User. Constructor này được sử dụng để khởi tạo Adapter và các biến cần thiết, cũng như khởi tạo đối tượng FirebaseFirestore để tương tác với cơ sở dữ liệu Firebase Firestore.
+//
+//        onCreateViewHolder: Phương thức này tạo và trả về một ViewHolder mới cho mỗi item trong RecyclerView. Nó inflate layout item_quan_ly_khach_hang để tạo ra một ViewHolder.
+//
+//        onBindViewHolder: Phương thức này được gọi khi RecyclerView yêu cầu một ViewHolder để hiển thị dữ liệu tại một vị trí cụ thể. Nó gán dữ liệu từ danh sách User vào ViewHolder. Nó hiển thị thông tin về tên, email và trạng thái của người dùng. Nếu trạng thái là "Đang hoạt động", nút xóa sẽ bị vô hiệu hóa và màu chữ sẽ được thiết lập màu xanh lá cây. Nếu trạng thái là "Không hoạt động", nút xóa sẽ hiển thị và màu chữ sẽ được thiết lập màu xám.
+//
+//        getTen(): Phương thức này trả về một bộ lọc để tìm kiếm người dùng theo tên.
+//
+//        changeTT(): Phương thức này được sử dụng để thay đổi trạng thái của người dùng (hoạt động hoặc không hoạt động). Nó thực hiện cập nhật trạng thái của người dùng trong cơ sở dữ liệu Firestore.
+//
+//        getItemCount(): Phương thức này trả về số lượng item trong danh sách người dùng.
+//
+//        ViewHolder class: Lớp ViewHolder để giữ các thành phần giao diện cho mỗi item trong RecyclerView. Nó chứa các thành phần như TextView cho tên, email và trạng thái của người dùng, cũng như ImageButton cho nút xóa.

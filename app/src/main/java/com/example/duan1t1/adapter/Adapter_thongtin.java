@@ -43,3 +43,10 @@ public class Adapter_thongtin extends FragmentStateAdapter {
         fragmentThongtin.setUs(user);
     }
 }
+//        Constructor: Adapter này nhận vào một FragmentActivity. Constructor này được sử dụng để khởi tạo Adapter và các biến cần thiết, bao gồm cả hai Fragment được sử dụng.
+//
+//        createFragment: Phương thức này tạo và trả về một Fragment tương ứng với vị trí được chỉ định trong ViewPager2. Nếu vị trí là 0, nó trả về Fragment_thongtin, nếu không, nó trả về Fragment_khoanchi.
+//
+//        getItemCount: Phương thức này trả về số lượng Fragment được hiển thị trong ViewPager2. Ở đây, chỉ có hai Fragment được hiển thị, do đó phương thức này trả về giá trị cố định là 2.
+//
+//        data: Phương thức này được sử dụng để cung cấp dữ liệu người dùng cho Fragment_thongtin. Nó gọi phương thức setUs của Fragment_thongtin và truyền vào đối tượng User.

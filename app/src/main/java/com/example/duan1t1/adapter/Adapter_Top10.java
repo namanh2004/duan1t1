@@ -86,3 +86,14 @@ public class Adapter_Top10 extends RecyclerView.Adapter<Adapter_Top10.viewHolder
         }
     }
 }
+//        Constructor: Adapter này nhận vào một Context, một danh sách các đối tượng SanPham (sản phẩm), và một danh sách HashMap chứa thông tin về top 10 sản phẩm. Constructor này được sử dụng để khởi tạo Adapter và các biến cần thiết.
+//
+//        onCreateViewHolder: Phương thức này tạo và trả về một ViewHolder mới cho mỗi item trong RecyclerView. Nó sử dụng LayoutInflater để inflate layout item_top10sp.
+//
+//        onBindViewHolder: Phương thức này được gọi khi RecyclerView yêu cầu một ViewHolder để hiển thị dữ liệu tại một vị trí cụ thể. Nó gán dữ liệu từ danh sách top 10 sản phẩm vào ViewHolder. Đầu tiên, nó lấy thông tin về sản phẩm từ danh sách SanPham dựa trên mã sản phẩm. Sau đó, nó sử dụng thư viện Glide để tải ảnh sản phẩm từ URL và gán vào ImageView trong ViewHolder. Cuối cùng, nó hiển thị tên sản phẩm, hãng và số lượng bán được của sản phẩm đó.
+//
+//        maSP: Phương thức này được sử dụng để tìm kiếm và trả về đối tượng SanPham từ danh sách dựa trên mã sản phẩm.
+//
+//        getItemCount: Phương thức này trả về số lượng item trong danh sách top 10 sản phẩm.
+//
+//        ViewHolder class: Lớp ViewHolder để giữ các thành phần giao diện cho mỗi item trong RecyclerView. Nó chứa các thành phần như ImageView cho ảnh sản phẩm và TextView cho tên sản phẩm, hãng và số lượng bán được.
