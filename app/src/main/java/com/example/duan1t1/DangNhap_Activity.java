@@ -311,3 +311,29 @@ public class DangNhap_Activity extends AppCompatActivity {
 
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Gọi phương thức anhxa() để ánh xạ các thành phần giao diện và khởi tạo ProgressDialog.
+//        Thiết lập sự kiện nhấn cho các nút "Đăng ký", "Đăng nhập", và "Quên mật khẩu" để gọi các phương thức tương ứng.
+//        anhxa(): Phương thức này được sử dụng để ánh xạ các thành phần giao diện:
+//
+//        Ánh xạ các EditText (email, matKhau) và Button (dangky, dangNhap) cùng TextView (quenMK).
+//        Khởi tạo ProgressDialog để hiển thị tiến trình đăng nhập.
+//        Khởi tạo đối tượng FirebaseFirestore để truy cập cơ sở dữ liệu Firestore của Firebase.
+//        Thiết lập tùy chọn đăng nhập bằng Google và khởi tạo GoogleSignInClient.
+//        dangNhap(): Phương thức này được sử dụng để thực hiện quá trình đăng nhập:
+//
+//        Lấy email và mật khẩu từ các EditText.
+//        Sử dụng FirebaseAuth để thực hiện xác thực đăng nhập bằng email và mật khẩu.
+//        Nếu đăng nhập thành công, gọi phương thức checkBan() để kiểm tra tình trạng của tài khoản người dùng.
+//        checkBan(): Phương thức này được sử dụng để kiểm tra trạng thái của tài khoản người dùng trong cơ sở dữ liệu Firestore:
+//
+//        Truy vấn cơ sở dữ liệu Firestore để lấy thông tin về người dùng dựa trên mã người dùng (maUser).
+//        Kiểm tra trạng thái của tài khoản và gọi phương thức DangNhap() để xác định loại người dùng và chuyển hướng đến màn hình tương ứng.
+//        DangNhap(): Phương thức này được sử dụng để xác định loại người dùng (admin, nhân viên, hoặc khách hàng) và chuyển hướng đến màn hình tương ứng sau khi đăng nhập thành công.
+//
+//        quenMK(): Phương thức này được sử dụng để mở hộp thoại (dialog) cho phép người dùng nhập địa chỉ email để yêu cầu đặt lại mật khẩu.
+//
+//        quenPass(): Phương thức này được sử dụng để gửi email đặt lại mật khẩu vào địa chỉ email mà người dùng đã nhập.
+//
+//        DangNhapGG(): Phương thức này được sử dụng để xử lý đăng nhập bằng Google. Nó mở một intent để chọn tài khoản Google và xử lý kết quả trả về.

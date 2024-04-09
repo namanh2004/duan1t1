@@ -115,3 +115,14 @@ public class ShowMore extends AppCompatActivity {
                 });
     }
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập giao diện cho Activity.
+//        Lấy dữ liệu từ Intent, bao gồm danh sách mã cửa hàng hoặc danh mục cửa hàng và tiêu đề của danh sách.
+//        Khởi tạo các thành phần giao diện như RecyclerView để hiển thị danh sách sản phẩm, SearchView để tìm kiếm sản phẩm và TextView để hiển thị tiêu đề của danh sách.
+//        Thiết lập sự kiện onClick cho ImageView close để kết thúc Activity khi người dùng nhấn vào.
+//        nghe(String a): Phương thức này được sử dụng để lắng nghe sự kiện từ cơ sở dữ liệu Firebase khi có sự thay đổi trong danh sách sản phẩm của cửa hàng hoặc danh mục. Trong đó:
+//
+//        Kết nối đến cơ sở dữ liệu Firebase và lắng nghe sự kiện thay đổi trong bộ sưu tập "sanPham" dựa trên điều kiện đã được chỉ định (ví dụ: mã cửa hàng hoặc danh mục).
+//        Xử lý các sự kiện thêm, sửa đổi và xóa sản phẩm trong danh sách và cập nhật RecyclerView để hiển thị các thay đổi đó.
+//        searchView.setOnQueryTextListener(): Phương thức này được sử dụng để xử lý sự kiện tìm kiếm khi người dùng nhập văn bản vào SearchView. Khi có sự thay đổi trong văn bản tìm kiếm, Adapter của RecyclerView sẽ được cập nhật để lọc danh sách sản phẩm theo văn bản tìm kiếm và hiển thị kết quả lọc.

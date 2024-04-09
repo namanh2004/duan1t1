@@ -132,3 +132,24 @@ private FirebaseFirestore db ;
            }
        });
    }}
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Gọi phương thức anhXa() để ánh xạ các thành phần giao diện và khởi tạo ProgressDialog.
+//        Thiết lập sự kiện onClick cho nút "Đăng ký" (dangKy) để gọi phương thức dangKy() khi được nhấn.
+//        anhXa(): Phương thức này được sử dụng để ánh xạ các thành phần giao diện:
+//
+//        Ánh xạ các EditText (email, matKhau, reMatKhau) và Button (dangKy).
+//        Khởi tạo ProgressDialog để hiển thị thông báo tiến trình đăng ký.
+//        dangKy(): Phương thức này được sử dụng để thực hiện quá trình đăng ký người dùng mới:
+//
+//        Lấy email và mật khẩu từ các EditText.
+//        Kiểm tra các trường hợp lỗi như trường rỗng, mật khẩu không khớp hoặc mật khẩu quá ngắn.
+//        Sử dụng FirebaseAuth để tạo người dùng mới bằng phương thức createUserWithEmailAndPassword().
+//        Nếu quá trình đăng ký thành công, chuyển hướng người dùng đến Activity ManHinhKhachHang và gọi phương thức taoUser() để tạo một tài khoản người dùng trong Firestore.
+//        Nếu quá trình đăng ký thất bại, hiển thị thông báo lỗi.
+//        taoUser(): Phương thức này được sử dụng để tạo một tài khoản người dùng mới trong Firestore:
+//
+//        Lấy thông tin của người dùng hiện tại từ FirebaseAuth.
+//        Sử dụng FirebaseFirestore để thêm một tài liệu mới vào bộ sưu tập "user" với UID của người dùng làm ID.
+//        Nếu quá trình tạo thành công, hiển thị thông báo đăng ký thành công và kết thúc Activity.
+//        Nếu quá trình tạo thất bại, hiển thị thông báo lỗi.

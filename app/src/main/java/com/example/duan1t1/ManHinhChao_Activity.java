@@ -66,3 +66,20 @@ public class ManHinhChao_Activity extends AppCompatActivity {
 
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Khởi tạo và thiết lập giao diện cho Activity.
+//        Khởi tạo SharedPreferences để lưu trạng thái khởi đầu của ứng dụng.
+//        Kiểm tra xem ứng dụng đã được mở lần đầu tiên hay không bằng cách lấy giá trị từ SharedPreferences.
+//        Tạo một Handler để chờ trong 3 giây trước khi chuyển đến Activity tiếp theo.
+//        vaomanhinh(): Phương thức này được sử dụng để xác định xem người dùng đã đăng nhập hay chưa và chuyển hướng đến Activity phù hợp dựa trên kết quả kiểm tra.
+//
+//        Nếu người dùng chưa đăng nhập, chuyển hướng đến màn hình đăng nhập (DangNhap_Activity).
+//        Nếu người dùng đã đăng nhập, chuyển hướng đến màn hình khách hàng (ManHinhKhachHang).
+//        FirebaseApp.initializeApp(): Phương thức này được sử dụng để khởi tạo FirebaseApp trong Activity.
+//
+//        SharedPreferences: Được sử dụng để lưu trạng thái ban đầu của ứng dụng, giúp xác định xem ứng dụng đã được mở lần đầu tiên hay không.
+//
+//        FirebaseFirestore: Được sử dụng để tương tác với cơ sở dữ liệu Firestore của Firebase.
+//
+//        Handler: Được sử dụng để tạo một độ trễ 3 giây trước khi chuyển đến Activity tiếp theo. Điều này cho phép màn hình chào hiển thị trong khoảng thời gian nhất định trước khi chuyển hướng.

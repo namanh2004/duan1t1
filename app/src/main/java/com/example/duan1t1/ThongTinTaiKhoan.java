@@ -603,3 +603,24 @@ String linkAnhGiaoDich="";
                 });
     }
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Khởi tạo các thành phần giao diện như ViewPager2 để hiển thị nội dung theo tab, CircleImageView để hiển thị ảnh đại diện, TabLayout để chọn tab, và ProgressDialog để hiển thị thông báo tiến trình.
+//        Thiết lập sự kiện onClick cho nút "Nạp tiền" và nút "Hủy" để thực hiện các hành động tương ứng.
+//        Thiết lập dữ liệu cho ViewPager2 và TabLayout thông qua Adapter_thongtin và TabLayoutMediator.
+//        naptien(): Phương thức này được sử dụng để hiển thị dialog cho phép người dùng nạp tiền vào tài khoản của họ. Trong đó:
+//
+//        Hiển thị dialog cho phép người dùng nhập email và số tiền muốn nạp.
+//        Cung cấp khả năng chụp ảnh màn hình cho chứng từ giao dịch.
+//        Xử lý khi người dùng nhấn nút "Gửi" để thực hiện gửi yêu cầu nạp tiền lên server Firebase.
+//        suaProFile(): Phương thức này được sử dụng để hiển thị dialog cho phép người dùng cập nhật thông tin cá nhân của họ. Trong đó:
+//
+//        Hiển thị dialog cho phép người dùng cập nhật ảnh đại diện, tên, email và số điện thoại.
+//        Xử lý khi người dùng nhấn nút "Sửa" để cập nhật thông tin cá nhân và ảnh đại diện lên server Firebase.
+//        layAnh(), yeucauquyen(), onRequestPermissionsResult(): Các phương thức này được sử dụng để yêu cầu và xử lý quyền truy cập vào ảnh từ bộ nhớ ngoại.
+//
+//        upAnh(), anhManhinh(): Các phương thức này được sử dụng để tải lên ảnh đại diện của người dùng và chứng từ giao dịch lên Firebase Storage.
+//
+//        addDiaChi(): Phương thức này được sử dụng để hiển thị dialog cho phép người dùng thêm hoặc quản lý địa chỉ giao hàng của họ.
+//
+//        nghe(): Phương thức này được sử dụng để lắng nghe sự kiện từ cơ sở dữ liệu Firebase để lấy thông tin cá nhân của người dùng.

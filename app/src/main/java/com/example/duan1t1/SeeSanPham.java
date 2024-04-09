@@ -230,3 +230,20 @@ public class SeeSanPham extends AppCompatActivity {
         });
     }
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập giao diện cho Activity.
+//        Lấy dữ liệu sản phẩm từ Intent truyền vào và gọi phương thức nghe() để lấy chi tiết sản phẩm từ cơ sở dữ liệu Firebase.
+//        Thiết lập các thành phần giao diện như RecyclerView cho kích cỡ sản phẩm, TextView cho tên, giá và năm sản xuất, ImageView cho hình ảnh sản phẩm và các Button để thêm và điều chỉnh số lượng sản phẩm.
+//        nghe(String s): Phương thức này được sử dụng để lấy chi tiết sản phẩm từ cơ sở dữ liệu Firebase dựa trên mã sản phẩm (s). Trong đó:
+//
+//        Kết nối đến cơ sở dữ liệu Firebase và lấy dữ liệu của sản phẩm có mã tương ứng.
+//        Hiển thị chi tiết sản phẩm trên giao diện sau khi dữ liệu được lấy về.
+//        themGio(GioHang hang, String maGio): Phương thức này được sử dụng để thêm sản phẩm vào giỏ hàng của người dùng. Trong đó:
+//
+//        Kiểm tra xem sản phẩm đã được thêm vào giỏ hàng của người dùng hay chưa bằng cách truy vấn cơ sở dữ liệu Firebase.
+//        Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm mới sản phẩm vào giỏ hàng với số lượng và kích cỡ đã được chọn.
+//        Nếu sản phẩm đã tồn tại trong giỏ hàng, cập nhật số lượng sản phẩm trong giỏ hàng.
+//        tinh(String dau): Phương thức này được sử dụng để tăng hoặc giảm số lượng sản phẩm khi người dùng nhấn vào các nút '+' hoặc '-'. Điều này được thực hiện bằng cách tăng hoặc giảm giá trị số hiển thị trên EditText.
+//
+//        checkHangDaThem(String kichCo, String maSp, String maKH): Phương thức này được sử dụng để kiểm tra xem sản phẩm đã được thêm vào giỏ hàng của người dùng chưa bằng cách truy vấn cơ sở dữ liệu Firebase. Nếu sản phẩm chưa tồn tại trong giỏ hàng, phương thức sẽ gọi themGio() để thêm sản phẩm vào giỏ hàng.

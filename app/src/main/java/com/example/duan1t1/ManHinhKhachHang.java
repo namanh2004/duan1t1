@@ -334,3 +334,24 @@ public class ManHinhKhachHang extends AppCompatActivity {
     }
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập giao diện cho Activity.
+//        Khởi tạo và thiết lập thanh toolbar và bottom navigation view.
+//        Khởi tạo Firestore để tương tác với cơ sở dữ liệu Firestore của Firebase.
+//        Lấy thông tin người dùng hiện tại từ FirebaseAuth.
+//        onCreateOptionsMenu() và onOptionsItemSelected(): Phương thức onCreateOptionsMenu() được gọi để tạo menu trên thanh toolbar của Activity. Phương thức onOptionsItemSelected() được gọi khi một item trong menu được chọn. Trong đoạn code này, khi item "Thông báo" được chọn, sẽ hiển thị một dialog chứa danh sách thông báo.
+//
+//        xemThongBao(): Phương thức này được sử dụng để hiển thị danh sách thông báo trong một dialog.
+//
+//        doiIcon(): Phương thức này được sử dụng để thay đổi biểu tượng của item menu "Thông báo" khi có thông báo mới.
+//
+//        yeuCauMoThongBao(): Phương thức này kiểm tra xem thông báo có được bật hay không. Nếu không, nó sẽ hiển thị một dialog yêu cầu người dùng cho phép hiển thị thông báo từ ứng dụng.
+//
+//        sendNotifi(): Phương thức này được sử dụng để gửi thông báo đến người dùng. Nó sử dụng NotificationCompat.Builder để tạo thông báo và NotificationManager để hiển thị thông báo.
+//
+//        hotro(): Phương thức này hiển thị một dialog cho phép người dùng nhập số điện thoại để yêu cầu hỗ trợ từ cửa hàng.
+//
+//        guiHotro(): Phương thức này được gọi khi người dùng gửi yêu cầu hỗ trợ. Nó cập nhật thông tin hỗ trợ của người dùng trong cơ sở dữ liệu.
+//
+//        getThongBao(): Phương thức này được sử dụng để lấy danh sách thông báo từ cơ sở dữ liệu và hiển thị chúng cho người dùng. Nó sử dụng một listener để theo dõi các thay đổi trong cơ sở dữ liệu và cập nhật danh sách thông báo khi có thay đổi.

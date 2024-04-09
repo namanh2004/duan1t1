@@ -203,3 +203,21 @@ public class loatDonHang extends AppCompatActivity {
 
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập layout cho Activity.
+//        Khởi tạo và cấu hình adapter (Adapter_quanlyhoadon) để hiển thị danh sách hóa đơn.
+//        Gọi các phương thức ngheGio(), ngheKH(), ngheHoaDon() và ngheSP() để lắng nghe sự kiện từ các bảng trong cơ sở dữ liệu Firebase.
+//        ngheHoaDon(): Phương thức này lắng nghe sự kiện từ bảng "donHang" trong cơ sở dữ liệu Firebase:
+//
+//        Sử dụng addSnapshotListener để lắng nghe sự thay đổi trong bảng "donHang".
+//        Xử lý các sự kiện thêm, sửa, xoá và cập nhật danh sách hóa đơn (list_dh) và cập nhật giao diện thông qua adapter.
+//        ngheKH(): Phương thức này lắng nghe sự kiện từ bảng "user" trong cơ sở dữ liệu Firebase:
+//
+//        Tương tự như ngheHoaDon(), phương thức này lắng nghe sự kiện từ bảng "user" và xử lý các sự kiện thêm, sửa, xoá và cập nhật danh sách người dùng (list_User) và cập nhật giao diện thông qua adapter.
+//        ngheSP(): Phương thức này lắng nghe sự kiện từ bảng "sanPham" trong cơ sở dữ liệu Firebase:
+//
+//        Tương tự như ngheHoaDon() và ngheKH(), phương thức này lắng nghe sự kiện từ bảng "sanPham" và xử lý các sự kiện thêm, sửa, xoá và cập nhật danh sách sản phẩm (list_sp) và cập nhật giao diện thông qua adapter.
+//        ngheGio(): Phương thức này lắng nghe sự kiện từ bảng "gioHang" trong cơ sở dữ liệu Firebase:
+//
+//        Tương tự như các phương thức trước, phương thức này lắng nghe sự kiện từ bảng "gioHang" và xử lý các sự kiện thêm, sửa, xoá và cập nhật danh sách giỏ hàng (list_GioHang) và cập nhật giao diện thông qua adapter.

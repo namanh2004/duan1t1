@@ -366,3 +366,38 @@ public class ManHinhAdmin extends AppCompatActivity {
 
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập layout cho Activity.
+//        Khởi tạo toolbar và các thành phần UI khác.
+//        Thiết lập sự kiện cho BottomNavigationView để chuyển đổi giữa các Fragment khác nhau (Quản lý nhân viên, quản lý khách hàng, quản lý sản phẩm, thống kê).
+//        Đăng ký sự kiện khi nhấn nút back trên điện thoại để hiển thị hộp thoại xác nhận đăng xuất.
+//        onOptionsItemSelected(): Phương thức này được gọi khi một item trong menu được chọn. Trong phương thức này:
+//
+//        Xử lý sự kiện khi người dùng chọn xem thông báo.
+//        onCreateOptionsMenu(): Phương thức này được gọi để tạo menu của Activity. Trong phương thức này:
+//
+//        Đổ menu từ file resource menu_toolbar.xml.
+//        Lưu menu vào biến menu_thongBao để thay đổi icon khi có thông báo mới.
+//        relaceFrg(): Phương thức này được sử dụng để thay thế Fragment hiện tại bằng một Fragment mới.
+//
+//        layAnh(): Phương thức này được sử dụng để mở activity để chọn hình ảnh từ bộ nhớ của thiết bị.
+//
+//        yeucauquyen(): Phương thức này được sử dụng để yêu cầu quyền truy cập bộ nhớ để chọn hình ảnh từ bộ nhớ của thiết bị.
+//
+//        onRequestPermissionsResult(): Phương thức này được gọi khi kết quả của quá trình yêu cầu quyền được trả về.
+//
+//        doipass(): Phương thức này được sử dụng để hiển thị hộp thoại cho phép người dùng đổi mật khẩu.
+//
+//        doiMK(): Phương thức này được sử dụng để xác thực mật khẩu hiện tại và đổi mật khẩu mới của người dùng.
+//
+//        xemThongBao(): Phương thức này được sử dụng để hiển thị hộp thoại cho phép người dùng xem các thông báo.
+//
+//        doiIcon(): Phương thức này được sử dụng để đổi icon của menu thông báo khi có thông báo mới.
+//
+//        getThongBao(): Phương thức này được sử dụng để lắng nghe sự kiện từ bảng "thongBao" trong cơ sở dữ liệu Firebase và cập nhật danh sách thông báo khi có sự thay đổi.
+
+
+
+
+

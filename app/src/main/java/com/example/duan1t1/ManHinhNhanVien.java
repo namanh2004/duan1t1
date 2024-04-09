@@ -352,3 +352,21 @@ public class ManHinhNhanVien extends AppCompatActivity {
 
 
 }
+//        onCreate(): Phương thức này được gọi khi Activity được tạo ra. Trong phương thức này:
+//
+//        Thiết lập giao diện cho Activity.
+//        Khởi tạo và thiết lập thanh công cụ (Toolbar).
+//        Thiết lập thanh điều hướng dưới cùng (BottomNavigationView) để chuyển giữa các fragment khác nhau.
+//        Khởi tạo FragmentManager để quản lý các fragment được hiển thị trong Activity.
+//        Gọi phương thức getThongBao() để lấy thông báo từ cơ sở dữ liệu Firebase.
+//        onOptionsItemSelected() và onCreateOptionsMenu(): Phương thức này được sử dụng để xử lý sự kiện khi người dùng chọn một item trong menu (ví dụ: xem thông báo). Trong đó:
+//
+//        onOptionsItemSelected() xử lý sự kiện khi người dùng chọn item trong menu.
+//        onCreateOptionsMenu() tạo menu và gán cho biến menu_thongBao để thao tác với nó sau này.
+//        layAnh() và yeucauquyen(): Đây là các phương thức được sử dụng để yêu cầu quyền truy cập ảnh từ bộ nhớ và mở cửa sổ chọn ảnh. Điều này được thực hiện bằng cách sử dụng Intent để mở Activity hệ thống có thể chọn ảnh từ bộ nhớ hoặc máy ảnh.
+//
+//        xemThongBao(), doiIcon() và yeuCauMoThongBao(): Các phương thức này được sử dụng để hiển thị thông báo và kiểm tra quyền thông báo của ứng dụng. Nếu quyền thông báo chưa được cấp, người dùng sẽ được yêu cầu cấp quyền thông báo thông qua một hộp thoại.
+//
+//        sendNotifi() và getNotificationId(): Đây là các phương thức được sử dụng để gửi thông báo đến người dùng khi có sự kiện cụ thể xảy ra. Một thông báo sẽ được tạo với nội dung và biểu tượng cụ thể, sau đó được gửi đến NotificationManager để hiển thị.
+//
+//        getThongBao(): Phương thức này được sử dụng để lấy thông báo từ cơ sở dữ liệu Firebase. Nó sẽ lắng nghe sự thay đổi trong tập hợp thông báo và cập nhật giao diện người dùng tương ứng khi có sự thay đổi.
