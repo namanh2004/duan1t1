@@ -39,6 +39,7 @@ public class Adapter_thongbao extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        //thông báo
         convertView = ((Activity)context).getLayoutInflater().inflate(R.layout.item_thongbao,parent,false);
         TextView massage = convertView.findViewById(R.id.tv_thongbao);
 

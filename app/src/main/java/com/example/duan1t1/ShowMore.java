@@ -76,6 +76,7 @@ public class ShowMore extends AppCompatActivity {
     //lắng nghe các sự kiện thêm sưar xóa
     private void nghe(String a) {
         db = FirebaseFirestore.getInstance();
+        //Dòng này chỉ định bộ sưu tập "sanPham" và thiết lập một truy vấn để lọc các tài liệu trong đó trường "maHang" bằng chuỗi được cung cấp a.
         db.collection("sanPham").whereEqualTo("maHang", a).
                 addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -87,6 +88,7 @@ public class ShowMore extends AppCompatActivity {
                             return;
                         }
                         for (DocumentChange dc : value.getDocumentChanges()) {
+                            //Đoạn mã sử dụng một vòng lặp for để duyệt qua danh sách các thay đổi và thực hiện các hành động phù hợp với từng loại thay đổi (thêm, sửa đổi hoặc loại bỏ) trên các tài liệu tương ứng.
                             switch (dc.getType()) {
                                 case ADDED:
                                     list.add(dc.getDocument().toObject(SanPham.class));

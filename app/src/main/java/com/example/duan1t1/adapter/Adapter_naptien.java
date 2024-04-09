@@ -43,9 +43,10 @@ public class Adapter_naptien extends RecyclerView.Adapter<Adapter_naptien.ViewHo
     @SuppressLint({"RecyclerView", "ResourceAsColor"})
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //nạp tiền
         String Xanh = "#44cc00";
         String Cam = "#FFC107";
-        holder.ma.setText(list_naptien.get(position).get("maGG").toString());
+        holder.ma.setText(list_naptien.get(position).get("maGG").toString()); //.get("maGG"): Lấy giá trị tương ứng với khóa "maGG" từ mục dữ liệu. Giả sử mỗi mục dữ liệu là một bản ghi (Map) với các cặp khóa-giá trị.
         holder.sotien.setText(NumberFormat.getNumberInstance(Locale.getDefault()).format(list_naptien.get(position).get("sotien"))+" VND");
         holder.ngay.setText(list_naptien.get(position).get("time").toString());
         if (Long.parseLong(list_naptien.get(position).get("trangThai").toString())==0){
