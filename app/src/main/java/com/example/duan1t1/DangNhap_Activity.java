@@ -53,14 +53,17 @@ public class DangNhap_Activity extends AppCompatActivity {
     FirebaseAuth auth;
     // sử dụng để xử lý kết quả trả về từ một hoạt động khác (activity) mà bạn đã khởi chạy bằng phương thức startActivityForResult().
     private  final ActivityResultLauncher<Intent> activityResultLauncher
-            //Đây là một hợp đồng (contract) để nhận kết quả từ một hoạt động được khởi chạy bằng phương thức
             = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
+        //Phương thức này được gọi khi một kết quả trả về từ hoạt động đã được hoàn thành.
         public void onActivityResult(ActivityResult o) {
+            // kiểm tra xem kết quả trả về có thành công không (RESULT_OK).
             if(o.getResultCode() == RESULT_OK){
+                //để lấy thông tin tài khoản đã đăng nhập.
                 Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(o.getData());
                 try {
                     GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
+                    //Nếu lấy thông tin tài khoản thành công, sử dụng GoogleAuthProvider.getCredential() để lấy thông tin xác thực từ tài khoản Google.
                     AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(),null);
                     auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
