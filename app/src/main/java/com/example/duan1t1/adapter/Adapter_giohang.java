@@ -246,7 +246,7 @@ public class Adapter_giohang extends RecyclerView.Adapter<Adapter_giohang.ViewHo
             }
         });
     }
-//sanpham
+//sanphamm
     private String getTenLoai(String maHang) {
         for (Hang s : list_hang) {
             if (maHang.equals(s.getMaHang())) {
