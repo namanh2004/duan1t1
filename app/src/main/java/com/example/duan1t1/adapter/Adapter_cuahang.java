@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.duan1t1.R;
 import com.example.duan1t1.ShowMore;
 import com.example.duan1t1.model.Hang;
@@ -25,12 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_cuahang extends RecyclerView.Adapter<Adapter_cuahang.ViewHolder> implements Filterable {
-    List<Hang> list;
-    Context context;
-    Adapter_itemCuaHang itemCuaHang;
+    List<Hang> list; // Danh sách các hàng
+    Context context; // Ngữ cảnh của ứng dụng
+    Adapter_itemCuaHang itemCuaHang; // Adapter cho mỗi hàng
 
-
-    List<Hang> list_hangSearch;
+    List<Hang> list_hangSearch; // Danh sách hàng dùng cho tìm kiếm
 
     public Adapter_cuahang(List<Hang> list, Context context) {
         this.list = list;
@@ -50,20 +48,23 @@ public class Adapter_cuahang extends RecyclerView.Adapter<Adapter_cuahang.ViewHo
             return;
         }
 
-
+        // Thiết lập tên hàng
         holder.tenHang.setText(list.get(position).getTenHang());
+
+        // Tạo adapter cho danh sách sản phẩm trong hàng
         itemCuaHang = new Adapter_itemCuaHang(list.get(position).getSanPham(), context);
         holder.rcv_list.setAdapter(itemCuaHang);
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        holder.rcv_list.setLayoutManager(manager); // hiển thị list trong list
+        holder.rcv_list.setLayoutManager(manager); // hiển thị danh sách sản phẩm trong hàng
         holder.xemthem.setText("Xem thêm"); // chữ xem thêm
         holder.xemthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Chuyển sang màn hình xem thêm sản phẩm
                 Intent intent = new Intent(context, ShowMore.class);
                 List<SanPham> phamList = list.get(position).getSanPham();
                 String[] s = new String[]{list.get(position).getMaHang(), list.get(position).getTenHang()};
-                intent.putExtra("list", s); // phần xem thêm sản phẩm
+                intent.putExtra("list", s); // truyền thông tin hàng
                 ((Activity) context).startActivity(intent);
             }
         });
