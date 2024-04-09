@@ -212,6 +212,7 @@ public class SeeSanPham extends AppCompatActivity {
                     sanPham.setGia(task.getResult().toObject(SanPham.class).getGia());
                     sanPham.setTenSP(task.getResult().toObject(SanPham.class).getTenSP());
                     sanPham.setKichCo(task.getResult().toObject(SanPham.class).getKichCo());
+                    sanPham.setKichCo(task.getResult().toObject(SanPham.class).getKichCo());
                     sanPham.setNamSX(task.getResult().toObject(SanPham.class).getNamSX());
                     ten.setText(sanPham.getTenSP());
                     nam.setText("Năm sản xuất: " + sanPham.getNamSX());
