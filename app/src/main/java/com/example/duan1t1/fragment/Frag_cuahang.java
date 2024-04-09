@@ -138,3 +138,12 @@ public class Frag_cuahang extends Fragment {
     }
 
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_cuahang.xml.
+//
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() đã hoàn thành, cho phép thực hiện các thao tác khác liên quan đến giao diện người dùng.
+//
+//        anhXa(View view): Phương thức này được sử dụng để ánh xạ và cấu hình các thành phần giao diện người dùng như RecyclerView và SearchView. Nó cũng khởi tạo một Adapter_cuahang và thiết lập nó cho RecyclerView.
+//
+//        nghe(): Phương thức này sử dụng để lắng nghe sự thay đổi trong tập dữ liệu từ cơ sở dữ liệu Firebase. Nó sử dụng addSnapshotListener để theo dõi các thay đổi trong collection "hang" và "sanPham". Khi có sự thay đổi, nó gọi phương thức AddListSP() để thêm danh sách sản phẩm vào danh sách hàng và cập nhật RecyclerView.
+//
+//        AddListSP(String maHang, String name): Phương thức này thực hiện việc thêm danh sách sản phẩm vào danh sách hàng dựa trên mã hàng và tên hàng. Nó lắng nghe sự thay đổi trong collection "sanPham" và thêm các sản phẩm tương ứng vào danh sách sản phẩm của hàng. Sau đó, danh sách hàng được sắp xếp theo số lượng sản phẩm và RecyclerView được cập nhật.

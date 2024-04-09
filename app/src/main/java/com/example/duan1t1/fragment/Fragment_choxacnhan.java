@@ -72,3 +72,10 @@ String TAG = "TAG";
         });
     }
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là frangment_choxacnhan.xml.
+//
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() đã hoàn thành, cho phép thực hiện các thao tác khác liên quan đến giao diện người dùng.
+//
+//        anhXa(View view): Phương thức này được sử dụng để ánh xạ và cấu hình các thành phần giao diện người dùng như RecyclerView. Nó cũng khởi tạo một Adapter_choduyet và thiết lập nó cho RecyclerView.
+//
+//        getData(): Phương thức này thực hiện truy vấn đến cơ sở dữ liệu Firebase để lấy danh sách các đơn hàng mà người dùng đã tạo và chưa được xác nhận. Nó sử dụng whereEqualTo("maKhachHang", user.getUid()) để chỉ lấy các đơn hàng của người dùng hiện tại. Sau đó, nó tạo một Adapter_choduyet mới và thiết lập nó cho RecyclerView. Khi kết quả trả về, nó lặp qua mỗi tài liệu trong tập kết quả và thêm nó vào danh sách đơn hàng. Cuối cùng, nó gọi notifyDataSetChanged() để thông báo cho Adapter rằng dữ liệu đã thay đổi.

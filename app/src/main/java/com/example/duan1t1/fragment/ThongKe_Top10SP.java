@@ -97,3 +97,19 @@ public class ThongKe_Top10SP extends Fragment {
     }
 
 }
+//        onCreateView(): Phương thức này được gọi để tạo và trả về giao diện người dùng của Fragment. Trong phương thức này:
+//
+//        Ánh xạ RecyclerView để hiển thị danh sách sản phẩm.
+//        Khởi tạo các danh sách list_SanPham và list_top10 để lưu trữ thông tin về sản phẩm và top 10 sản phẩm bán chạy nhất.
+//        Gọi các phương thức getSP() và getTop10() để lấy dữ liệu từ Firestore về danh sách sản phẩm và top 10 sản phẩm.
+//        getSP(): Phương thức này được sử dụng để lấy danh sách sản phẩm từ Firestore:
+//
+//        Sử dụng đối tượng FirebaseFirestore để truy vấn tất cả các tài liệu trong bộ sưu tập "sanPham".
+//        Khi dữ liệu được trả về, mỗi tài liệu được chuyển đổi thành đối tượng SanPham và thêm vào danh sách list_SanPham.
+//        getTop10(): Phương thức này được sử dụng để lấy top 10 sản phẩm bán chạy nhất từ Firestore:
+//
+//        Sử dụng đối tượng FirebaseFirestore để truy vấn tất cả các tài liệu trong bộ sưu tập "top10", được sắp xếp theo số lượng giảm dần và giới hạn chỉ lấy 10 tài liệu đầu tiên.
+//        Khi dữ liệu được trả về, mỗi tài liệu được chuyển đổi thành một HashMap chứa thông tin về số lượng sản phẩm và mã sản phẩm tương ứng, sau đó được thêm vào danh sách list_top10.
+//        Adapter_Top10: Adapter Adapter_Top10 được sử dụng để hiển thị danh sách top 10 sản phẩm bán chạy nhất trong RecyclerView. Adapter này nhận danh sách list_SanPham chứa thông tin về tất cả các sản phẩm và danh sách list_top10 chứa thông tin về top 10 sản phẩm. Adapter sẽ hiển thị thông tin của các sản phẩm trong top 10 dựa trên thông tin được cung cấp từ hai danh sách này.
+//
+//        notifyDataSetChanged(): Sau khi lấy dữ liệu từ Firestore, phương thức notifyDataSetChanged() được gọi trên adapter để thông báo cho RecyclerView cập nhật giao diện hiển thị với dữ liệu mới.

@@ -492,3 +492,31 @@ public class QuanLyGiay extends Fragment {
 
 
 }
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() và được sử dụng để thiết lập các thành phần giao diện người dùng và các sự kiện liên quan. Trong trường hợp này:
+//
+//        Gán sự kiện click cho nút "Thêm sản phẩm" (ibtn_them).
+//        Thiết lập sự kiện cho SearchView để tìm kiếm sản phẩm.
+//        anhxa(View view): Phương thức này được sử dụng để ánh xạ và khởi tạo các thành phần giao diện người dùng:
+//
+//        Ánh xạ RecyclerView, ImageButton, và SearchView.
+//        Khởi tạo danh sách list_giay để lưu trữ danh sách sản phẩm.
+//        Khởi tạo đối tượng FirebaseFirestore để tương tác với Firebase Firestore.
+//        Gọi phương thức getSP() để lấy danh sách sản phẩm từ Firebase Firestore.
+//        getSP(): Phương thức này được sử dụng để lấy danh sách sản phẩm từ Firebase Firestore:
+//
+//        Sử dụng orderBy("time") để sắp xếp danh sách theo thời gian.
+//        Thêm các sự kiện để lắng nghe các thay đổi trong danh sách sản phẩm và cập nhật giao diện người dùng tương ứng.
+//        them(String name, String id, SanPham sanPham, String tennut, String thongBao): Phương thức này được sử dụng để hiển thị dialog cho việc thêm hoặc sửa sản phẩm:
+//
+//        Tạo dialog và hiển thị nó.
+//        Thiết lập các thành phần trong dialog như hình ảnh, tên sản phẩm, giá, kích cỡ, năm sản xuất, số lượng, v.v.
+//        Cung cấp chức năng cho nút "Thêm" hoặc "Sửa" sản phẩm.
+//        addHang(EditText thuongHieu, SanPham sanPham): Phương thức này được sử dụng để thêm hoặc xóa hãng sản phẩm:
+//
+//        Hiển thị dialog cho việc thêm hoặc xóa hãng.
+//        Hiển thị danh sách hãng và cung cấp chức năng để xóa một hãng.
+//        Cho phép người dùng thêm một hãng mới và lưu vào Firebase Firestore.
+//        ngheHang(List<Hang> list): Phương thức này được sử dụng để lắng nghe sự thay đổi trong danh sách hãng và cập nhật giao diện người dùng tương ứng.
+//
+//        upAnh(Uri imageUri, EditText ten, EditText gia, EditText namSX, EditText soLuong, EditText list_kichco, Dialog dialog, String id, SanPham sanPham, String thongbao): Phương thức này được sử dụng để tải ảnh lên Firebase Storage và cập nhật thông tin sản phẩm lên Firebase Firestore.
+

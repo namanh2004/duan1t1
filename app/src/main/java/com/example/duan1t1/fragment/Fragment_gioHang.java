@@ -372,3 +372,20 @@ public class Fragment_gioHang extends Fragment {
         return tong;
     }
 }
+//         onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_gio_hang.xml.
+//
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() đã hoàn thành, cho phép thực hiện các thao tác khác liên quan đến giao diện người dùng.
+//
+//        anhXa(View view): Phương thức này được sử dụng để ánh xạ và cấu hình các thành phần giao diện người dùng như RecyclerView, TextView, và LinearLayout. Nó cũng khởi tạo một Adapter_giohang và thiết lập nó cho RecyclerView. Ngoài ra, phương thức này cũng đăng ký một sự kiện click cho LinearLayout mua hàng.
+//
+//        diaLogDatHang(): Phương thức này hiển thị một dialog hỏi người dùng có muốn xác nhận đơn hàng hay không. Nếu người dùng chọn "Đặt hàng", nó sẽ gọi phương thức getThongTin() để lấy thông tin người dùng và xác nhận đơn hàng.
+//
+//        mua(): Phương thức này được gọi khi người dùng xác nhận đặt hàng. Nó tạo một đơn hàng mới trong cơ sở dữ liệu Firebase và xóa các sản phẩm trong giỏ hàng của người dùng. Sau đó, nó gửi thông báo cho người quản lý để thông báo có đơn hàng mới.
+//
+//        guiThongBao(): Phương thức này được sử dụng để gửi thông báo đến người quản lý khi có đơn hàng mới được đặt.
+//
+//        getData(): Phương thức này thực hiện các truy vấn đến cơ sở dữ liệu Firebase để lấy danh sách sản phẩm trong giỏ hàng, danh sách sản phẩm, và danh sách cửa hàng.
+//
+//        getHang(), getSP(), getGio(): Các phương thức này lắng nghe sự thay đổi trong các collection tương ứng trong cơ sở dữ liệu Firebase và cập nhật danh sách hàng hóa, danh sách sản phẩm, và danh sách giỏ hàng tương ứng.
+//
+//        tinhTong(): Phương thức này tính tổng giá trị của các sản phẩm trong giỏ hàng dựa trên số lượng và giá của mỗi sản phẩm.

@@ -52,3 +52,15 @@ TabLayout tabLayout;
         return view;
     }
 }
+//    onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_frg__quan_ly_k_h__l_s.xml, chứa một ViewPager2 và một TabLayout.
+//
+//        viewPager2 và tabLayout: Khai báo các biến để tham chiếu tới ViewPager2 và TabLayout trong layout.
+//
+//        onCreateView(): Tạo và thiết lập ViewPager2 và TabLayout:
+//
+//        Khởi tạo adapter viewPagerQuanLy (đã được custom) để cung cấp nội dung cho ViewPager2.
+//        Gọi setAdapter() trên ViewPager2 và truyền vào adapter đã khởi tạo.
+//        Sử dụng TabLayoutMediator để kết nối TabLayout và ViewPager2:
+//        Truyền vào TabLayout và ViewPager2.
+//        Sử dụng TabLayoutMediator.TabConfigurationStrategy để cấu hình các tab:
+//        Đặt tiêu đề cho tab dựa trên vị trí của nó trong ViewPager2.

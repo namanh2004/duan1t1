@@ -97,3 +97,22 @@ Long tong=0l;
                 });
     }
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là tab_khoanchi.xml.
+//
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() đã hoàn thành, cho phép thực hiện các thao tác khác liên quan đến giao diện người dùng.
+//
+//        anhXa(View view): Phương thức này được sử dụng để ánh xạ và cấu hình các thành phần giao diện người dùng như RecyclerView và TextView. Nó cũng khởi tạo một Adapter_choduyet và thiết lập nó cho RecyclerView.
+//
+//        getData(): Phương thức này thực hiện truy vấn đến cơ sở dữ liệu Firebase để lấy danh sách các đơn hàng đã được duyệt trong khoảng thời gian hiện tại (tính từ ngày đầu tiên của tháng đến ngày cuối cùng của tháng). Các đơn hàng được lọc dựa trên ngày mua nằm trong khoảng thời gian đã chỉ định.
+//
+//        formatter: Định dạng ngày tháng được sử dụng để chuyển đổi ngày thành chuỗi với định dạng "yyyy/MM/dd".
+//
+//        dateStart và dateEnd: Các biến này đại diện cho ngày bắt đầu và kết thúc của tháng hiện tại. Chúng được tính bằng cách sử dụng lớp LocalDate của Java 8 và phương thức TemporalAdjusters để lấy ngày đầu tiên và ngày cuối cùng của tháng.
+//
+//        ngayStart và ngayEnd: Các biến này lưu trữ chuỗi biểu diễn của ngày bắt đầu và kết thúc của tháng hiện tại theo định dạng đã được xác định trước.
+//
+//        getData(): Phương thức này thực hiện truy vấn đến cơ sở dữ liệu Firebase để lấy danh sách các đơn hàng đã được duyệt trong khoảng thời gian hiện tại (tính từ ngày đầu tiên của tháng đến ngày cuối cùng của tháng). Các đơn hàng được lọc dựa trên ngày mua nằm trong khoảng thời gian đã chỉ định.
+//
+//        tong: Biến này tính tổng giá trị của các đơn hàng đã được duyệt trong khoảng thời gian hiện tại.
+//
+//        Adapter_choduyet: Là một Adapter được sử dụng để hiển thị danh sách các đơn hàng đã được duyệt trong RecyclerView.

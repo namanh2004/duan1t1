@@ -208,5 +208,20 @@ public class Frg_quanLyHoaDon extends Fragment {
 
 
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_frg_quan_ly_hoa_don.xml, chứa một RecyclerView để hiển thị danh sách đơn hàng.
+//
+//        loatData(): Phương thức này khởi tạo và load dữ liệu cho Fragment. Cụ thể:
+//
+//        Tạo mới các danh sách để lưu trữ dữ liệu đơn hàng (list_dh), sản phẩm (list_sp), và người dùng (list_User).
+//        Gọi các phương thức getAll(), getSP(), getKH(), và getHoaDon() để lấy dữ liệu từ Firestore và hiển thị lên RecyclerView.
+//        getAll(): Phương thức này gọi các phương thức getSP(), getKH(), và getHoaDon() để lấy dữ liệu sản phẩm, khách hàng, và đơn hàng từ Firestore.
+//
+//        getHoaDon(): Phương thức này lắng nghe sự thay đổi trong collection "donHang" trên Firestore để lấy danh sách các đơn hàng. Khi có sự thay đổi (thêm, sửa, xoá), phương thức này được gọi và xử lý dữ liệu dựa trên các loại sự kiện.
+//
+//        getKH(): Phương thức này lắng nghe sự thay đổi trong collection "user" trên Firestore để lấy danh sách khách hàng. Tương tự như getHoaDon(), khi có sự thay đổi, phương thức này được gọi và xử lý dữ liệu tương tự.
+//
+//        getSP(): Phương thức này lắng nghe sự thay đổi trong collection "sanPham" trên Firestore để lấy danh sách sản phẩm. Tương tự như getHoaDon(), khi có sự thay đổi, phương thức này được gọi và xử lý dữ liệu tương tự.
+//
+//        getAnh(): Phương thức này lấy danh sách sản phẩm từ Firestore và thêm vào danh sách list_sp.
 
 

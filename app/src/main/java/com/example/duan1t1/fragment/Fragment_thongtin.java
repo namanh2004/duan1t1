@@ -207,3 +207,18 @@ public class Fragment_thongtin extends Fragment {
         this.us = us;
     }
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là tab_thongtincanhan.xml.
+//
+//        onViewCreated(): Phương thức này được gọi sau khi onCreateView() đã hoàn thành, cho phép thực hiện các thao tác khác liên quan đến giao diện người dùng.
+//
+//        anhxa(View view): Phương thức này được sử dụng để ánh xạ và cấu hình các thành phần giao diện người dùng như LinearLayouts, và thiết lập các sự kiện người dùng cho chúng.
+//
+//        dangxuat(): Phương thức này hiển thị một hộp thoại xác nhận khi người dùng chọn đăng xuất. Nếu người dùng đồng ý, phương thức sẽ đăng xuất người dùng và chuyển hướng đến màn hình đăng nhập.
+//
+//        XemLichSu(): Phương thức này hiển thị một hộp thoại chứa danh sách các đơn hàng mà người dùng đã đặt. Nó tải danh sách này từ cơ sở dữ liệu Firestore và sử dụng một Adapter để hiển thị dữ liệu trong RecyclerView.
+//
+//        getData(List<DonHang> list,Adapter_choduyet adapterChoduyet,RecyclerView rcv_list): Phương thức này lấy danh sách các đơn hàng từ cơ sở dữ liệu Firestore và thêm chúng vào danh sách đã cho. Sau đó, nó thông báo cho Adapter rằng dữ liệu đã thay đổi để cập nhật giao diện người dùng.
+//
+//        lichuGG(): Phương thức này hiển thị một hộp thoại chứa lịch sử giao dịch nạp tiền của người dùng. Nó tải dữ liệu này từ cơ sở dữ liệu Firestore và sử dụng một Adapter để hiển thị dữ liệu trong RecyclerView.
+//
+//        getListGG(List<HashMap<String,Object>> listA): Phương thức này lấy danh sách các giao dịch nạp tiền từ cơ sở dữ liệu Firestore và thêm chúng vào danh sách đã cho. Sau đó, nó sắp xếp danh sách theo thứ tự thời gian giảm dần và thông báo cho Adapter rằng dữ liệu đã thay đổi để cập nhật giao diện người dùng.

@@ -124,3 +124,19 @@ public class QuanLyKhachHang extends Fragment {
     }
 
 }
+//    onCreateView(): Phương thức này được gọi để tạo và trả về giao diện người dùng của Fragment. Trong phương thức này:
+//
+//        Khởi tạo và ánh xạ các thành phần giao diện như RecyclerView và SearchView.
+//        Gọi phương thức loatData() để tải dữ liệu và hiển thị danh sách khách hàng.
+//        loatData(): Phương thức này được sử dụng để tải dữ liệu và hiển thị danh sách khách hàng:
+//
+//        Thiết lập RecyclerView và Adapter để hiển thị danh sách.
+//        Gọi phương thức getNguoiDung() để lấy dữ liệu từ Firebase Firestore và cập nhật giao diện người dùng.
+//        getNguoiDung(): Phương thức này được sử dụng để lấy danh sách khách hàng từ Firebase Firestore:
+//
+//        Sử dụng whereEqualTo("chucVu", 3) để lọc danh sách khách hàng với chức vụ là 3 (người dùng thông thường).
+//        Thêm các sự kiện để lắng nghe các thay đổi trong danh sách khách hàng và cập nhật giao diện người dùng tương ứng.
+//        SearchView.OnQueryTextListener(): Đây là một giao diện lắng nghe sự kiện khi người dùng nhập văn bản vào ô tìm kiếm. Trong phương thức này:
+//
+//        Thực hiện tìm kiếm trong danh sách khách hàng dựa trên văn bản được nhập vào ô tìm kiếm.
+//        Gọi phương thức getTen() trong adapter để thực hiện việc lọc và hiển thị kết quả tìm kiếm.

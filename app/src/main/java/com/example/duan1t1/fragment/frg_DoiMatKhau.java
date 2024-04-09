@@ -89,3 +89,10 @@ public class frg_DoiMatKhau extends Fragment {
     }
 
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là dialog__doi_mat_khau.xml.
+//
+//        btn_doiMK.setOnClickListener(): Phương thức này được gắn vào nút "Đổi mật khẩu" để xử lý sự kiện khi người dùng nhấn vào nút. Nó kiểm tra xem người dùng đã nhập đủ thông tin và xác nhận mật khẩu mới hay chưa. Nếu thông tin cần thiết đã được nhập đúng, nó gọi đến phương thức doiMK() để thực hiện việc đổi mật khẩu.
+//
+//        doiMK(String pasCu, String pasMoi): Phương thức này được sử dụng để thực hiện việc đổi mật khẩu của người dùng. Đầu tiên, nó xác thực lại người dùng bằng cách sử dụng mật khẩu hiện tại của họ thông qua phương thức reauthenticate(). Sau đó, nếu xác thực thành công, nó cập nhật mật khẩu mới cho người dùng thông qua phương thức updatePassword(). Cuối cùng, nó hiển thị một thông báo phản hồi cho người dùng về kết quả của quá trình đổi mật khẩu.
+//
+//        Tóm lại, frg_DoiMatKhau cho phép người dùng thay đổi mật khẩu của họ thông qua giao diện người dùng và cập nhật thông tin mới vào cơ sở dữ liệu Firebase Authentication.

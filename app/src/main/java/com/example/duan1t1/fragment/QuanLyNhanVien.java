@@ -257,3 +257,24 @@ public class QuanLyNhanVien extends Fragment {
     }
 
 }
+//        onCreateView(): Phương thức này được gọi để tạo và trả về giao diện người dùng của Fragment. Trong phương thức này:
+//
+//        Khởi tạo và ánh xạ các thành phần giao diện như RecyclerView, SearchView và nút thêm nhân viên.
+//        Gọi phương thức loatData() để tải dữ liệu và hiển thị danh sách nhân viên.
+//        Thiết lập sự kiện cho nút thêm nhân viên để mở một dialog cho phép người dùng thêm nhân viên mới.
+//        loatData(): Phương thức này được sử dụng để tải dữ liệu và hiển thị danh sách nhân viên:
+//
+//        Thiết lập RecyclerView và Adapter để hiển thị danh sách nhân viên.
+//        Gọi phương thức nghe() để lắng nghe sự kiện và cập nhật danh sách nhân viên từ Firebase Firestore.
+//        nghe(): Phương thức này được sử dụng để lắng nghe sự kiện và cập nhật danh sách nhân viên từ Firebase Firestore:
+//
+//        Sử dụng whereEqualTo("chucVu", 2) để lọc danh sách nhân viên với chức vụ là 2 (nhân viên).
+//        Thêm các sự kiện để lắng nghe các thay đổi trong danh sách nhân viên và cập nhật giao diện người dùng tương ứng.
+//        isValidateEmail() và isValidatePhone(): Đây là hai phương thức kiểm tra tính hợp lệ của email và số điện thoại được nhập vào, sử dụng các biểu thức chính quy để kiểm tra.
+//
+//        themTK(): Phương thức này được sử dụng để thêm một tài khoản người dùng mới vào Firebase Authentication và thông tin tương ứng vào Firestore:
+//
+//        Sử dụng createUserWithEmailAndPassword() để tạo một tài khoản mới với email và mật khẩu được cung cấp.
+//        Thêm thông tin người dùng mới vào Firestore.
+//        Gửi một email xác nhận đến địa chỉ email của người dùng mới.
+//        guiMail(): Phương thức này được sử dụng để gửi một email xác nhận đặt lại mật khẩu đến địa chỉ email được cung cấp.

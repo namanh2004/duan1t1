@@ -133,3 +133,14 @@ public class frg_lichsunap extends Fragment {
         });
     }
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_frg_lichsunap.xml, chứa một RecyclerView để hiển thị danh sách yêu cầu nạp tiền.
+//
+//        getListYC(): Phương thức này thực hiện lắng nghe sự thay đổi trong collection "naptien" trên Firestore để lấy danh sách yêu cầu nạp tiền. Khi có sự thay đổi (thêm, sửa, xoá), phương thức này được gọi và xử lý dữ liệu dựa trên các loại sự kiện.
+//
+//        Trong sự kiện ADDED: Nếu có một tài liệu được thêm vào collection, Fragment sẽ thêm dữ liệu của tài liệu đó vào danh sách list, sau đó cập nhật adapter để cập nhật giao diện.
+//
+//        Trong sự kiện MODIFIED: Nếu có một tài liệu được sửa đổi trong collection, Fragment sẽ kiểm tra xem tài liệu đã bị sửa đổi có cùng vị trí với trước đó hay không. Nếu cùng vị trí, nó sẽ cập nhật dữ liệu tại vị trí đó trong danh sách. Nếu không, nó sẽ xoá dữ liệu cũ và thêm dữ liệu mới vào danh sách.
+//
+//        Trong sự kiện REMOVED: Nếu có một tài liệu bị xoá khỏi collection, Fragment sẽ xoá dữ liệu tương ứng khỏi danh sách.
+//
+//        getSoDU(): Phương thức này thực hiện lắng nghe sự thay đổi trong collection "user" trên Firestore để lấy danh sách người dùng có chức vụ là 3 (có thể là người dùng cần nạp tiền). Khi có sự thay đổi (thêm, sửa, xoá), phương thức này được gọi và xử lý dữ liệu tương tự như trong phương thức getListYC().

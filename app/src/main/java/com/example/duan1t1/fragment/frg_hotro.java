@@ -87,3 +87,14 @@ public class frg_hotro extends Fragment {
         });
     }
 }
+//        onCreateView(): Phương thức này inflates layout cho Fragment từ tập tin XML và trả về một View. Trong trường hợp này, layout được sử dụng là fragment_frg_hotro.xml, chứa một ListView để hiển thị danh sách người dùng cần hỗ trợ.
+//
+//        nghe(): Phương thức này thực hiện lắng nghe sự thay đổi trong collection "hoTro" trên Firestore. Khi có sự thay đổi (thêm, sửa, xoá), phương thức này được gọi và xử lý dữ liệu dựa trên các loại sự kiện.
+//
+//        Trong sự kiện ADDED: Nếu có một tài liệu được thêm vào collection, Fragment sẽ tạo một đối tượng User từ dữ liệu của tài liệu đó và thêm vào danh sách list_us. Sau đó, cập nhật adapter để cập nhật giao diện.
+//
+//        Trong sự kiện MODIFIED: Nếu có một tài liệu được sửa đổi trong collection, Fragment sẽ kiểm tra xem tài liệu đã bị sửa đổi có cùng vị trí với trước đó hay không. Nếu cùng vị trí, nó sẽ cập nhật đối tượng User tại vị trí đó trong danh sách. Nếu không, nó sẽ xoá đối tượng cũ và thêm đối tượng mới vào danh sách.
+//
+//        Trong sự kiện REMOVED: Nếu có một tài liệu bị xoá khỏi collection, Fragment sẽ xoá đối tượng User tương ứng khỏi danh sách.
+//
+//        Adapter_hoTro: Là một adapter được sử dụng để hiển thị danh sách người dùng cần hỗ trợ trong ListView.

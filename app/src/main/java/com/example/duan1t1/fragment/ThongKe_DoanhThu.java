@@ -141,3 +141,16 @@ public class ThongKe_DoanhThu extends Fragment {
         return view;
     }
 }
+//    onCreateView(): Phương thức này được gọi để tạo và trả về giao diện người dùng của Fragment. Trong phương thức này:
+//
+//        Khởi tạo và ánh xạ các thành phần giao diện như EditText để chọn ngày bắt đầu và kết thúc, TextView để hiển thị doanh thu, và nút thực hiện thống kê.
+//        Thiết lập sự kiện cho TextView tv_chonNgayStart và tv_ChoNgayEnd để mở một hộp thoại DatePickerDialog khi được nhấp vào để chọn ngày.
+//        Thiết lập sự kiện cho nút btn_doanhthu để thực hiện thống kê doanh thu dựa trên khoảng thời gian đã chọn.
+//        DatePickerDialog: Khi TextView được nhấp vào, một hộp thoại DatePickerDialog sẽ được hiển thị để cho phép người dùng chọn ngày. Sau khi người dùng chọn xong, ngày sẽ được hiển thị trong EditText tương ứng.
+//
+//        btn_doanhthu.setOnClickListener(): Phương thức này được sử dụng để thực hiện thống kê doanh thu dựa trên khoảng thời gian đã chọn:
+//
+//        Lấy ngày bắt đầu và kết thúc từ các EditText edt_NgayStart và edt_NgayEnd.
+//        Truy vấn vào Firestore để lấy các đơn hàng đã duyệt trong khoảng thời gian đã chọn.
+//        Tính toán tổng doanh thu từ các đơn hàng đã trả về và hiển thị kết quả trong TextView tv_doanhThu.
+//        Format doanh thu: Khi hiển thị doanh thu, sử dụng NumberFormat.getNumberInstance(Locale.getDefault()).format(tong) để định dạng số tiền thành chuỗi dạng số nguyên có dấu phân cách hàng nghìn và đơn vị tiền tệ.
