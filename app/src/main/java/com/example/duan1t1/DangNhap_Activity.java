@@ -52,29 +52,29 @@ public class DangNhap_Activity extends AppCompatActivity {
     GoogleSignInClient client;
     FirebaseAuth auth;
     // sử dụng để xử lý kết quả trả về từ một hoạt động khác (activity) mà bạn đã khởi chạy bằng phương thức startActivityForResult().
-    private  final ActivityResultLauncher<Intent> activityResultLauncher
+    private final ActivityResultLauncher<Intent> activityResultLauncher
             = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         //Phương thức này được gọi khi một kết quả trả về từ hoạt động đã được hoàn thành.
         public void onActivityResult(ActivityResult o) {
             // kiểm tra xem kết quả trả về có thành công không (RESULT_OK).
-            if(o.getResultCode() == RESULT_OK){
+            if (o.getResultCode() == RESULT_OK) {
                 //để lấy thông tin tài khoản đã đăng nhập.
                 Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(o.getData());
                 try {
                     GoogleSignInAccount signInAccount = accountTask.getResult(ApiException.class);
                     //Nếu lấy thông tin tài khoản thành công, sử dụng GoogleAuthProvider.getCredential() để lấy thông tin xác thực từ tài khoản Google.
-                    AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(),null);
+                    AuthCredential authCredential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
                     //Tiếp theo, sử dụng thông tin xác thực để đăng nhập vào Firebase Authentication bằng phương thức signInWithCredential().
                     auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //Trong trường hợp đăng nhập thành công, chuyển đến màn hình ManHinhKhachHang và hiển thị thông báo "Đăng nhập thành công".
-                            if(task.isComplete()){
+                            if (task.isComplete()) {
                                 auth = FirebaseAuth.getInstance();
                                 chuyen(ManHinhKhachHang.class);
                                 Toast.makeText(DangNhap_Activity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -181,68 +181,74 @@ public class DangNhap_Activity extends AppCompatActivity {
                 });
     }
 
+    //được sử dụng để ánh xạ (mapping) các thành phần giao diện từ tệp layout XML
+    // sang các biến trong mã Java và khởi tạo một số đối tượng cần thiết cho việc đăng nhập.
     private void anhxa() {
         dangky = findViewById(R.id.btn_dangky);
         dangNhap = findViewById(R.id.btn_dangnhap);
         email = findViewById(R.id.edt_email_dangnhap);
         matKhau = findViewById(R.id.edt_matkhau_dangnhap);
         quenMK = findViewById(R.id.tv_quenpass);
+        // Khởi tạo một đối tượng ProgressDialog, được sử dụng để hiển thị tiến trình cho người dùng trong quá trình đăng nhập.
         progressDialog = new ProgressDialog(this);
+        // Khởi tạo một thể hiện của lớp FirebaseFirestore, được sử dụng để truy cập và tương tác với cơ sở dữ liệu Firestore của Firebase.
         db = FirebaseFirestore.getInstance();
+        //Xây dựng các tùy chọn cho việc đăng nhập bằng Google, bao gồm yêu cầu token xác thực (requestIdToken) và yêu cầu thông tin email (requestEmail).
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.client_id))
                 .requestEmail()
                 .build();
-        client = GoogleSignIn.getClient(DangNhap_Activity.this,googleSignInOptions);
+        client = GoogleSignIn.getClient(DangNhap_Activity.this, googleSignInOptions);
         auth = FirebaseAuth.getInstance();
     }
 
- //dang nhap
-public void dangnhap() {
-    String mEmail = email.getText().toString().trim();
-    String mPass = matKhau.getText().toString().trim();
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    if (email.getText().toString().isEmpty() || matKhau.getText().toString().isEmpty()) {
-        Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
-        return;
-    }
-    progressDialog.setTitle("Loading");
-    progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
-    progressDialog.show();
+    //được gọi khi người dùng nhấn nút "Đăng nhập".
+    public void dangnhap() {
+        String mEmail = email.getText().toString().trim();
+        String mPass = matKhau.getText().toString().trim();
+        // Lấy ra một thể hiện của lớp FirebaseAuth, được sử dụng để quản lý xác thực người dùng.
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        if (email.getText().toString().isEmpty() || matKhau.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Sẽ mất một lúc vui lòng chờ");
+        progressDialog.show();
 
 
+//Sử dụng phương thức signInWithEmailAndPassword() của đối tượng mAuth để thực hiện xác thực đăng nhập bằng email và mật khẩu mà người dùng đã nhập.
+        mAuth.signInWithEmailAndPassword(mEmail, mPass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            checkBan(user);
 
-    mAuth.signInWithEmailAndPassword(mEmail, mPass)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        checkBan(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(DangNhap_Activity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                            progressDialog.cancel();
+                        }
 
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Toast.makeText(DangNhap_Activity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-                        progressDialog.cancel();
                     }
-
-                }
-            });
-}
+                });
+    }
 
     //check ban
     private void checkBan(FirebaseUser user) {
-        db.collection("user").whereEqualTo("maUser",user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("user").whereEqualTo("maUser", user.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (!task.isComplete()){
+                if (!task.isComplete()) {
                     Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (task.isSuccessful()){
-                    if (task.getResult().toObjects(User.class).get(0).getTrangThai()==1){
+                if (task.isSuccessful()) {
+                    if (task.getResult().toObjects(User.class).get(0).getTrangThai() == 1) {
                         DangNhap(task.getResult().toObjects(User.class).get(0));
-                    }else {
+                    } else {
                         Toast.makeText(DangNhap_Activity.this, "Tài khoản bạn đã bị đình chỉ vui lòng liên hệ", Toast.LENGTH_SHORT).show();
                         FirebaseAuth.getInstance().signOut();
                         finish();
@@ -260,24 +266,24 @@ public void dangnhap() {
     }
 
 
-  //Dang nhap user
-  private void DangNhap(User user) {
-      if (user.getChucVu() == 1) {
-          intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
-      } else if (user.getChucVu() == 2) {
-          intent = new Intent(DangNhap_Activity.this, ManHinhNhanVien.class);
-      } else if (user.getChucVu() == 3) {
-          intent = new Intent(DangNhap_Activity.this, ManHinhKhachHang.class);
-      } else {
-          Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
-      }
-      finishAffinity();
-      if (!isFinishing()) {
-          return;
-      }
-      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-      startActivity(intent);
-  }
+    //Dang nhap user
+    private void DangNhap(User user) {
+        if (user.getChucVu() == 1) {
+            intent = new Intent(DangNhap_Activity.this, ManHinhAdmin.class);
+        } else if (user.getChucVu() == 2) {
+            intent = new Intent(DangNhap_Activity.this, ManHinhNhanVien.class);
+        } else if (user.getChucVu() == 3) {
+            intent = new Intent(DangNhap_Activity.this, ManHinhKhachHang.class);
+        } else {
+            Toast.makeText(DangNhap_Activity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+        }
+        finishAffinity();
+        if (!isFinishing()) {
+            return;
+        }
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
     @Override
     protected void onDestroy() {
