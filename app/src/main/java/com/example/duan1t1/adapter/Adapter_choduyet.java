@@ -25,12 +25,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.ViewHolder> {
-    List<DonHang> list_donHang;
-    Context context;
-    FirebaseFirestore db;
-    int manhinh = 0;
+    List<DonHang> list_donHang;  // Danh sách các đơn hàng cần duyệt
+    Context context;  // Ngữ cảnh của ứng dụng
+    FirebaseFirestore db;  // Firestore để truy vấn cơ sở dữ liệu
+    int manhinh = 0;  // Biến để xác định loại màn hình
 
-
+    // Constructor của Adapter
     public Adapter_choduyet(List<DonHang> list_donHang, Context context, int i) {
         this.list_donHang = list_donHang;
         this.context = context;
@@ -52,18 +52,23 @@ public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.View
         String Do = "#FF0000";
         String Cam = "#FFC107";
 
+        // Tính tổng số lượng sản phẩm trong đơn hàng
         Long soluong = TongGiaSP(position);
+        // Thiết lập thông tin cho các TextView trong ViewHolder
         holder.tenSP.setText("Mã hàng: " + list_donHang.get(position).getMaDon());
         holder.giaSP.setText("Tổng giá: " +  NumberFormat.getNumberInstance(Locale.getDefault()).format(list_donHang.get(position).getGiaDon()) + "đ");
         holder.soLuong.setText("Số lượng: " + soluong + " SP");
         holder.ngay.setText("Ngày mua: " + list_donHang.get(position).getNgayMua());
+
+        // Hiển thị thông tin về người duyệt nếu có
         if (list_donHang.get(position).getMaNhanVien()!=null){
             holder.nguoiduyet.setVisibility(View.VISIBLE);
             getNguoiDuyet(holder.nguoiduyet,position);
-        }else {
+        } else {
             holder.nguoiduyet.setVisibility(View.GONE);
         }
-        holder.nguoiduyet.setText("Người duyệt: "+list_donHang.get(position).getMaNhanVien());
+
+        // Thiết lập trạng thái của đơn hàng
         if (list_donHang.get(position).getTrangThai() == 0) {
             holder.trangthai.setText("Đang chờ xác nhận");
             holder.trangthai.setTextColor(Color.parseColor(Cam));
@@ -80,16 +85,16 @@ public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.View
             holder.trangthai.setText("Lỗi");
         }
 
+        // Xử lý sự kiện khi nút xóa được nhấn
         holder.xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 xoa(list_donHang.get(position).getMaDon(), position);
             }
         });
-
-
     }
 
+    // Lấy thông tin người duyệt từ Firestore
     private void getNguoiDuyet(TextView nguoiduyet,int p) {
         db.collection("user").document(list_donHang.get(p).getMaNhanVien()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -101,7 +106,7 @@ public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.View
         });
     }
 
-
+    // Tính tổng số lượng sản phẩm trong đơn hàng
     private Long TongGiaSP(int p) {
         Long i = 0l;
         for (Don g : list_donHang.get(p).getListSP()) {
@@ -110,8 +115,8 @@ public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.View
         return i;
     }
 
+    // Xóa đơn hàng từ Firestore
     private void xoa(String maDon, int p) {
-
         db.collection("donHang").document(maDon).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -126,12 +131,12 @@ public class Adapter_choduyet extends RecyclerView.Adapter<Adapter_choduyet.View
         });
     }
 
-
     @Override
     public int getItemCount() {
         return list_donHang.size();
     }
 
+    // Lớp ViewHolder để giữ các thành phần view trong một mục của RecyclerView
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tenSP, soLuong, giaSP, trangthai, xoa, ngay,nguoiduyet;
 
