@@ -111,7 +111,7 @@
            <androidx.appcompat.widget.AppCompatButton
                android:layout_width="match_parent"
                android:layout_height="50dp"
-               android:background="@drawable/btn_xacnhan"
+               android:background="@drawable/btn_them"
                android:layout_marginTop="10dp"
                android:text="Thêm"
                android:textColor="@color/white"
