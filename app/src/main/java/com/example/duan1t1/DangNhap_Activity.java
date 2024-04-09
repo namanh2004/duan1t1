@@ -299,6 +299,9 @@ public class DangNhap_Activity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+    //được gọi khi hoạt động hiện tại được hủy và sắp bị thu hồi bởi hệ thống Android.
+    // Trong trường hợp này, phương thức onDestroy()
+    // được ghi đè để thực hiện một số hoạt động dọn dẹp sau khi hoạt động kết thúc.
 
     @Override
     protected void onDestroy() {
