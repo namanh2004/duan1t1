@@ -23,9 +23,9 @@ private  Intent intent;
         dangKy = findViewById(R.id.tv_dangky_begin);
 
 
-        nextActivityAdmin(); //admin
-        nextActivityNhanVien();//nhanvien
-        nextActivityKhachHang();//khachhang
+//        nextActivityAdmin(); //admin
+//        nextActivityNhanVien();//nhanvien
+//        nextActivityKhachHang();//khachhang
 
         dangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,47 +47,47 @@ private  Intent intent;
         finish();
     }
 
-    private void nextActivityAdmin() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null){
-
-            Intent intent = new Intent(this, DangNhap_Activity.class);
-            startActivity(intent);
-        }else {
-            //da co tai khoan admin
-            Intent intent = new Intent(this, ManHinhAdmin.class);
-            startActivity(intent);
-        }
-        finish();
-    }
-
-    private void nextActivityNhanVien() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null){
-
-            Intent intent = new Intent(this, DangNhap_Activity.class);
-            startActivity(intent);
-        }else {
-            //da co tai khoan nhan vien
-            Intent intent = new Intent(this, ManHinhNhanVien.class);
-            startActivity(intent);
-        }
-        finish();
-    }
-
-    private void nextActivityKhachHang() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null){
-
-            Intent intent = new Intent(this, DangNhap_Activity.class);
-            startActivity(intent);
-        }else {
-            //da co tai khoan khach hang
-            Intent intent = new Intent(this, ManHinhKhachHang.class);
-            startActivity(intent);
-        }
-        finish();
-    }
+//    private void nextActivityAdmin() {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user == null){
+//
+//            Intent intent = new Intent(this, DangNhap_Activity.class);
+//            startActivity(intent);
+//        }else {
+//            //da co tai khoan admin
+//            Intent intent = new Intent(this, ManHinhAdmin.class);
+//            startActivity(intent);
+//        }
+//        finish();
+//    }
+//
+//    private void nextActivityNhanVien() {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user == null){
+//
+//            Intent intent = new Intent(this, DangNhap_Activity.class);
+//            startActivity(intent);
+//        }else {
+//            //da co tai khoan nhan vien
+//            Intent intent = new Intent(this, ManHinhNhanVien.class);
+//            startActivity(intent);
+//        }
+//        finish();
+//    }
+//
+//    private void nextActivityKhachHang() {
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user == null){
+//
+//            Intent intent = new Intent(this, DangNhap_Activity.class);
+//            startActivity(intent);
+//        }else {
+//            //da co tai khoan khach hang
+//            Intent intent = new Intent(this, ManHinhKhachHang.class);
+//            startActivity(intent);
+//        }
+//        finish();
+//    }
 
 
 }
