@@ -232,12 +232,12 @@ public class ManHinhKhachHang extends AppCompatActivity {
     private void sendNotifi() {
         Notification notification = new NotificationCompat.Builder(this, MyNotification.CHANNEL_ID)
                 .setContentTitle("Thông báo")
-                .setContentText("Đơn hàng đã được xác nhận")
+                .setContentText("Đơn hàng đã được xác nhận") //Đặt nội dung của thông báo
                 .setSmallIcon(R.drawable.logo3)
                 .setColor(getColor(R.color.xanhla))
                 .build();
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(getNotificationId(), notification);
+        manager.notify(getNotificationId(), notification); //được sử dụng để lấy một ID duy nhất cho mỗi thông báo được hiển thị.
     }
 
     private int getNotificationId() {

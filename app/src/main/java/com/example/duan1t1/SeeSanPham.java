@@ -56,7 +56,7 @@ public class SeeSanPham extends AppCompatActivity {
     public void setKichCo(String kichCo) {
         this.kichCo = kichCo;
     }
-
+// chi tiết sản phẩm
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
